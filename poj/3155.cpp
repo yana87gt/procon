@@ -5,14 +5,14 @@ using namespace std;
 #define debug(x) cout<<#x<<": "<<x<<endl
 typedef long long ll;
 struct Point{
-	double x,y;
-	bool operator<(const Point& right)const{
-		return (x==right.x ? y<right.y : x<right.x);
-	}
+    double x,y;
+    bool operator<(const Point& right)const{
+        return (x==right.x ? y<right.y : x<right.x);
+    }
 };
 
 int main(void){
-	int N;
+    int N;
 
-	return 0;
+    return 0;
 }

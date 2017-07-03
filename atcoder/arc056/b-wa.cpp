@@ -7,21 +7,21 @@ bool used[200000]={};
 int N,M,S;
 
 bool move(int to,int n){
-	if(used[n])return false;
-	each(it,p[n]) (*it);
+    if(used[n])return false;
+    each(it,p[n]) (*it);
 }
 
 int main(){
-	cin>>N>>M>>S;
-	int u,v;
-	rep(i,M){
-		cin>>u>>v;
-		p[u].insert(v);
-		p[v].insert(u);
-	}
+    cin>>N>>M>>S;
+    int u,v;
+    rep(i,M){
+        cin>>u>>v;
+        p[u].insert(v);
+        p[v].insert(u);
+    }
 
-	rep1(i,N){
-		if(move(i,S))
-	}
-	return 0;
+    rep1(i,N){
+        if(move(i,S))
+    }
+    return 0;
 }

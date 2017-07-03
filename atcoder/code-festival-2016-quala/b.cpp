@@ -4,10 +4,10 @@ using namespace std;
 
 int a[100001];
 int main(void){
-	int N,cnt=0;
-	cin>>N;
-	rep1(i,N)cin>>a[i];
-	rep1(i,N)if(a[a[i]]==i)cnt++;
-	cout<<cnt/2<<endl;
-	return 0;
+    int N,cnt=0;
+    cin>>N;
+    rep1(i,N)cin>>a[i];
+    rep1(i,N)if(a[a[i]]==i)cnt++;
+    cout<<cnt/2<<endl;
+    return 0;
 }

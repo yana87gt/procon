@@ -4,13 +4,13 @@ using namespace std;
 typedef long long ll;
 
 int main(void){
-	int N,K;
-	cin>>N>>K;
-	vector<int> a(N);
-	rep(i,N)cin>>a[i];
-	sort(a.begin(), a.end());
-	ll sum=0;
-	rep(i,K)sum += i+a[i];
-	cout<<sum<<endl;
-	return 0;
+    int N,K;
+    cin>>N>>K;
+    vector<int> a(N);
+    rep(i,N)cin>>a[i];
+    sort(a.begin(), a.end());
+    ll sum=0;
+    rep(i,K)sum += i+a[i];
+    cout<<sum<<endl;
+    return 0;
 }

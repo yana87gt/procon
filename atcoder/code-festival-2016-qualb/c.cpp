@@ -4,24 +4,24 @@ using namespace std;
 typedef long long ll;
 
 int main(){
-	ll W,H,c,res=0;
-	cin>>W>>H;
-	vector< pair<ll,bool> > v(W+H);
-	rep(i,W+H){
-		cin>>c;
-		v[i]={c,i<W};
-	}
-	sort(v.begin(),v.end());
-	W++;H++;
-	for(auto t:v){
-		if(t.second){
-			res+=t.first*H;
-			W--;
-		}else{
-			res+=t.first*W;
-			H--;
-		}
-	}
-	cout<<res<<endl;
-	return 0;
+    ll W,H,c,res=0;
+    cin>>W>>H;
+    vector< pair<ll,bool> > v(W+H);
+    rep(i,W+H){
+        cin>>c;
+        v[i]={c,i<W};
+    }
+    sort(v.begin(),v.end());
+    W++;H++;
+    for(auto t:v){
+        if(t.second){
+            res+=t.first*H;
+            W--;
+        }else{
+            res+=t.first*W;
+            H--;
+        }
+    }
+    cout<<res<<endl;
+    return 0;
 }

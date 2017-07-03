@@ -8,7 +8,7 @@ const double EPS = 1e-9;
 #define EQ(n,m) (abs((n)-(m)) < EPS)
 
 double cross(Point a, Point b) {
-	return a.X*b.Y - a.Y*b.X;
+    return a.X*b.Y - a.Y*b.X;
 }
 
 Point crosspointLL(Point a1, Point a2, Point b1, Point b2) {
@@ -20,13 +20,13 @@ Point crosspointLL(Point a1, Point a2, Point b1, Point b2) {
 }
 
 int main(void){
-	int q;
-	cin>>q;
-	rep(i,q){
-		double x0,y0,x1,y1,x2,y2,x3,y3;
-		cin>>x0>>y0>>x1>>y1>>x2>>y2>>x3>>y3;
-		Point p=crosspointLL({x0,y0},{x1,y1},{x2,y2},{x3,y3});
-		printf("%.9f %.9f\n",p.X,p.Y);
-	}
-	return 0;
+    int q;
+    cin>>q;
+    rep(i,q){
+        double x0,y0,x1,y1,x2,y2,x3,y3;
+        cin>>x0>>y0>>x1>>y1>>x2>>y2>>x3>>y3;
+        Point p=crosspointLL({x0,y0},{x1,y1},{x2,y2},{x3,y3});
+        printf("%.9f %.9f\n",p.X,p.Y);
+    }
+    return 0;
 }

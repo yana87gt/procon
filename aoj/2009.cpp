@@ -19,10 +19,10 @@ bool Intersection(Point p1,Point p2,Point p3,Point p4,Point *ret){
 int main(void){
     int n;
     while(cin>>n,n){
-    	int division=1;
+        int division=1;
         vector<Point> p1(n);
         vector<Point> p2(n);
-    	rep(i,n){
+        rep(i,n){
             cin>>p1[i].x>>p1[i].y>>p2[i].x>>p2[i].y;
             vector<Point> cross;
             rep(j,i){

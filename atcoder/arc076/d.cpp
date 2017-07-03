@@ -10,62 +10,62 @@ bool compx(Point &p1,Point &p2){ return p1.x<p2.x; }
 bool compy(Point &p1,Point &p2){ return p1.y<p2.y; }
 
 struct UnionFind{
-	vector<int> par;
-	vector<int> sizes;
-	UnionFind(int n):par(n),sizes(n,1){ rep(i,n)par[i]=i; }
+    vector<int> par;
+    vector<int> sizes;
+    UnionFind(int n):par(n),sizes(n,1){ rep(i,n)par[i]=i; }
 
-	//find root of x
-	int find(int x){
-		if(x!=par[x]) par[x] = find(par[x]);
-		return par[x];
-	}
+    //find root of x
+    int find(int x){
+        if(x!=par[x]) par[x] = find(par[x]);
+        return par[x];
+    }
 
-	void unite(int x,int y){
-		x = find(x);
-		y = find(y);
-		if(x == y) return;
-		if(sizes[x] < sizes[y]) swap(x, y);
-		par[y] = x;
-		sizes[x] += sizes[y];
-	}
+    void unite(int x,int y){
+        x = find(x);
+        y = find(y);
+        if(x == y) return;
+        if(sizes[x] < sizes[y]) swap(x, y);
+        par[y] = x;
+        sizes[x] += sizes[y];
+    }
 
-	bool same(int x,int y){ return find(x) == find(y); }
-	int size(int x){ return sizes[find(x)]; }
+    bool same(int x,int y){ return find(x) == find(y); }
+    int size(int x){ return sizes[find(x)]; }
 };
 
 
 
 int main(void){
-	int N;
-	cin>>N;
-	vector<Point> p(N);
-	rep(i,N){
-		cin>>p[i].x>>p[i].y;
-		p[i].id=i;
-	}
+    int N;
+    cin>>N;
+    vector<Point> p(N);
+    rep(i,N){
+        cin>>p[i].x>>p[i].y;
+        p[i].id=i;
+    }
 
-	vector<edge> ve;
-	
-	sort(all(p),compx);
-	rep(i,N-1){
-		ve.push_back({p[i].id, p[i+1].id, p[i+1].x-p[i].x});
-	}
-	
-	sort(all(p),compy);
-	rep(i,N-1){
-		ve.push_back({p[i].id, p[i+1].id, p[i+1].y-p[i].y});
-	}
-	
+    vector<edge> ve;
+    
+    sort(all(p),compx);
+    rep(i,N-1){
+        ve.push_back({p[i].id, p[i+1].id, p[i+1].x-p[i].x});
+    }
+    
+    sort(all(p),compy);
+    rep(i,N-1){
+        ve.push_back({p[i].id, p[i+1].id, p[i+1].y-p[i].y});
+    }
+    
 
-	UnionFind uf(N);
-	sort(all(ve),compe);
-	ll res=0;
-	rep(i,(int)ve.size()){
-		if(!uf.same(ve[i].from,ve[i].to)){
-			uf.unite(ve[i].from,ve[i].to);
-			res+=ve[i].cost;
-		}
-	}
-	cout<<res<<endl;
-	return 0;
+    UnionFind uf(N);
+    sort(all(ve),compe);
+    ll res=0;
+    rep(i,(int)ve.size()){
+        if(!uf.same(ve[i].from,ve[i].to)){
+            uf.unite(ve[i].from,ve[i].to);
+            res+=ve[i].cost;
+        }
+    }
+    cout<<res<<endl;
+    return 0;
 }

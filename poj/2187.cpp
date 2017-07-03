@@ -6,12 +6,12 @@ using namespace std;
 #define rep(i,n) for(int i=0;i<n;++i)
 
 struct Point{
-	double x,y;
-	bool operator < (const Point &p)const{return x!=p.x ? x<p.x : y<p.y;}
-	Point operator + (const Point &p)const{return {x+p.x,y+p.y};}
-	Point operator - (const Point &p)const{return {x-p.x,y-p.y};}
-	Point operator * (const double &k)const{return {k*x,k*y};}
-	Point operator / (const double &k)const{return {x/k,y/k};}
+    double x,y;
+    bool operator < (const Point &p)const{return x!=p.x ? x<p.x : y<p.y;}
+    Point operator + (const Point &p)const{return {x+p.x,y+p.y};}
+    Point operator - (const Point &p)const{return {x-p.x,y-p.y};}
+    Point operator * (const double &k)const{return {k*x,k*y};}
+    Point operator / (const double &k)const{return {x/k,y/k};}
 };
 
 typedef vector<Point> VP;
@@ -67,10 +67,10 @@ double convexDiameter(VP ps) {
 }
 
 int main(){
-	int N;
-	scanf("%d",&N);
-	VP p(N);
-	rep(i,N)scanf("%lf%lf",&p[i].x,&p[i].y);
-	printf("%.0f\n",convexDiameter(convexHull(p)));
-	return 0;
+    int N;
+    scanf("%d",&N);
+    VP p(N);
+    rep(i,N)scanf("%lf%lf",&p[i].x,&p[i].y);
+    printf("%.0f\n",convexDiameter(convexHull(p)));
+    return 0;
 }

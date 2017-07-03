@@ -8,14 +8,14 @@ using namespace std;
 int N;
 double w[100];
 double func(int n){
-	if(n==N-1)return w[n];
-	return 2*sqrt(w[n]*func(n+1));
+    if(n==N-1)return w[n];
+    return 2*sqrt(w[n]*func(n+1));
 }
 
 int main(void){
-	cin>>N;
-	rep(i,N)cin>>w[i];
-	sort(w,w+N);
-	printf("%.3f\n",func(0));
-	return 0;
+    cin>>N;
+    rep(i,N)cin>>w[i];
+    sort(w,w+N);
+    printf("%.3f\n",func(0));
+    return 0;
 }

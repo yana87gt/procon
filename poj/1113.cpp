@@ -6,12 +6,12 @@ using namespace std;
 #define rep(i,n) for(int i=0;i<n;++i)
 
 struct Point{
-	double x,y;
-	bool operator < (const Point &p)const{return x!=p.x ? x<p.x : y<p.y;}
-	Point operator + (const Point &p)const{return {x+p.x,y+p.y};}
-	Point operator - (const Point &p)const{return {x-p.x,y-p.y};}
-	Point operator * (const double &k)const{return {k*x,k*y};}
-	Point operator / (const double &k)const{return {x/k,y/k};}
+    double x,y;
+    bool operator < (const Point &p)const{return x!=p.x ? x<p.x : y<p.y;}
+    Point operator + (const Point &p)const{return {x+p.x,y+p.y};}
+    Point operator - (const Point &p)const{return {x-p.x,y-p.y};}
+    Point operator * (const double &k)const{return {k*x,k*y};}
+    Point operator / (const double &k)const{return {x/k,y/k};}
 };
 
 typedef vector<Point> VP;
@@ -48,14 +48,14 @@ VP convexHull(VP ps) {  // 元の点集合がソートされていいならVP&�
 }
 
 int main(){
-	int N,L;
-	scanf("%d%d",&N,&L);
-	VP p(N);
-	rep(i,N)scanf("%lf%lf",&p[i].x,&p[i].y);
-	VP q = convexHull(p);
-	int M = q.size()-1;
-	double res=2*L*3.14159265358979+abs(q[M]-q[0]);
-	rep(i,M)res+=abs(q[i]-q[i+1]);
-	printf("%.0f\n",res);
-	return 0;
+    int N,L;
+    scanf("%d%d",&N,&L);
+    VP p(N);
+    rep(i,N)scanf("%lf%lf",&p[i].x,&p[i].y);
+    VP q = convexHull(p);
+    int M = q.size()-1;
+    double res=2*L*3.14159265358979+abs(q[M]-q[0]);
+    rep(i,M)res+=abs(q[i]-q[i+1]);
+    printf("%.0f\n",res);
+    return 0;
 }

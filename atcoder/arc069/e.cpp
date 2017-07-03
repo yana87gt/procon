@@ -7,20 +7,20 @@ using namespace std;
 typedef long long ll;
 
 int main(void){
-	int N;
-	cin>>N;
-	vector<pair<ll,int>> a(N+1);
-	rep1(i,N){
-		cin>>a[i].x;
-		a[i].y=i;
-	}
-	sort(a.begin(),a.end(),greater<pair<ll,int>>());
-	vector<ll> cnt(N+1);
-	int min_y = N;
-	rep(i,N){
-		min_y = min(min_y,a[i].y);
-		cnt[min_y] += (i+1)*(a[i].x-a[i+1].x);
-	}
-	rep1(i,N)cout<<cnt[i]<<endl;
-	return 0;
+    int N;
+    cin>>N;
+    vector<pair<ll,int>> a(N+1);
+    rep1(i,N){
+        cin>>a[i].x;
+        a[i].y=i;
+    }
+    sort(a.begin(),a.end(),greater<pair<ll,int>>());
+    vector<ll> cnt(N+1);
+    int min_y = N;
+    rep(i,N){
+        min_y = min(min_y,a[i].y);
+        cnt[min_y] += (i+1)*(a[i].x-a[i+1].x);
+    }
+    rep1(i,N)cout<<cnt[i]<<endl;
+    return 0;
 }

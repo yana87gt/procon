@@ -7,41 +7,41 @@ using namespace std;
 #define debug(x) cout<<#x<<": "<<x<<endl
 typedef long long ll;
 struct Point{
-	double x,y;
-	bool operator<(const Point& right)const{
-		return (x==right.x ? y<right.y : x<right.x);
-	}
+    double x,y;
+    bool operator<(const Point& right)const{
+        return (x==right.x ? y<right.y : x<right.x);
+    }
 };
 
 vector<int> a,b;
 
 int bit[MAX_N+1],n;
 int sum(int i){
-	int s=0;
-	while(i>0){
-		s+=bit[i];
-		i-=i&-i;
-	}
-	return s;
+    int s=0;
+    while(i>0){
+        s+=bit[i];
+        i-=i&-i;
+    }
+    return s;
 }
 
 void add(int i,int x){
-	while(i<=n){
-		bit[i] +=x;
-		i+=i&-1;
-	}
+    while(i<=n){
+        bit[i] +=x;
+        i+=i&-1;
+    }
 }
 
 int main(void){
-	int n,m,k;
-	cin>>n>>m>>k;
-	a.resize(n+1);
-	b.resize(n+1);
-	rep1(i,n)cin>>a[i]>>b[i];
-	rep(_,m){
-		cin>>p>>q>>r;
+    int n,m,k;
+    cin>>n>>m>>k;
+    a.resize(n+1);
+    b.resize(n+1);
+    rep1(i,n)cin>>a[i]>>b[i];
+    rep(_,m){
+        cin>>p>>q>>r;
 
-	}
+    }
 
-	return 0;
+    return 0;
 }

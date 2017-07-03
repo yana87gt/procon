@@ -78,55 +78,55 @@ int inConvex(Point p, const VP& ps) {
 const double INF = 1e9;
 
 int main(void){
-	int N;
-	while(cin>>N,N){
-		vector<int> NV(N+2),H(N+2);
-		vector<VP> vp(N+2,VP());
-		rep(i,N){
-			cin>>NV[i]>>H[i];
-			vp[i] = VP(2*NV[i]);		
-			rep(j,NV[i]){
-				double x,y;
-				cin>>x>>y;
-				vp[i][j]={x,y};
-			}
-		}
-		
-		double theta,phi,sx,sy,tx,ty;
-		cin>>theta>>phi>>sx>>sy>>tx>>ty;
-		theta *= M_PI/180.0;
-		phi   *= M_PI/180.0;
+    int N;
+    while(cin>>N,N){
+        vector<int> NV(N+2),H(N+2);
+        vector<VP> cv(N+2,VP());
+        rep(i,N){
+            cin>>NV[i]>>H[i];
+            cv[i] = VP(2*NV[i]);        
+            rep(j,NV[i]){
+                double x,y;
+                cin>>x>>y;
+                cv[i][j]={x,y};
+            }
+        }
+        
+        double theta,phi,sx,sy,tx,ty;
+        cin>>theta>>phi>>sx>>sy>>tx>>ty;
+        theta *= M_PI/180.0;
+        phi   *= M_PI/180.0;
 
-		rep(i,N){
-			rep(j,NV[i]){
-				vp[i][j+NV[i]] = vp[i][j] - polar(H[i]/tan(phi),theta);
-			}
-			vp[i] = convexHull(vp[i]);
-		}
+        rep(i,N){
+            rep(j,NV[i]){
+                cv[i][j+NV[i]] = cv[i][j] - polar(H[i]/tan(phi),theta);
+            }
+            cv[i] = convexHull(cv[i]);
+        }
 
-		N += 2;
-		vp[N-1] = {{sx,sy}};
-		vp[N-2] = {{tx,ty}};
-	
-		vector<vector<double>> d(N,vector<double>(N,INF));
-		rep(i,N)rep(j,vp[i].size()){
-			rep(k,N-2)rep(l,vp[k].size()){
-				//凸包iの点j（もしくは点s,t）と 凸包kの辺(l,l+1) の距離
-				d[i][k] = d[k][i] = 
-					min(d[i][k],distSP(vp[k][l], vp[k][(l+1)%vp[k].size()], vp[i][j]));
-			}
-			rep(k,N-2){
-				//凸包iの点j（もしくは点s,t）が 凸包kの内部にいる
-				if(inConvex(vp[i][j], vp[k])){
-					d[i][k] = d[k][i] = 0;
-				}
-			}
-		}
+        N += 2;
+        cv[N-1] = {{sx,sy}};
+        cv[N-2] = {{tx,ty}};
+    
+        vector<vector<double>> d(N,vector<double>(N,INF));
+        rep(i,N)rep(j,cv[i].size()){
+            rep(k,N-2)rep(l,cv[k].size()){
+                //凸包iの点j（もしくは点s,t）と 凸包kの辺(l,l+1) の距離
+                d[i][k] = d[k][i] = 
+                    min(d[i][k],distSP(cv[k][l], cv[k][(l+1)%cv[k].size()], cv[i][j]));
+            }
+            rep(k,N-2){
+                //凸包iの点j（もしくは点s,t）が 凸包kの内部にいる
+                if(inConvex(cv[i][j], cv[k])){
+                    d[i][k] = d[k][i] = 0;
+                }
+            }
+        }
 
-		rep(k,N)rep(i,N)rep(j,N)
-			d[i][j] = min(d[i][j], d[i][k]+d[k][j]);
+        rep(k,N)rep(i,N)rep(j,N)
+            d[i][j] = min(d[i][j], d[i][k]+d[k][j]);
 
-		printf("%.9f\n",min(d[N-1][N-2],abs(vp[N-1][0]-vp[N-2][0])));
-	}
-	return 0;
+        printf("%.9f\n",min(d[N-1][N-2],abs(cv[N-1][0]-cv[N-2][0])));
+    }
+    return 0;
 }

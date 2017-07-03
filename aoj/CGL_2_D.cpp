@@ -54,12 +54,12 @@ double distSS(Point a1, Point a2, Point b1, Point b2) {
 }
 
 int main(void){
-	int q;
-	cin>>q;
-	rep(i,q){
-		double x0,y0,x1,y1,x2,y2,x3,y3;
-		cin>>x0>>y0>>x1>>y1>>x2>>y2>>x3>>y3;
-		printf("%.9f\n",distSS({x0,y0},{x1,y1},{x2,y2},{x3,y3}));
-	}
-	return 0;
+    int q;
+    cin>>q;
+    rep(i,q){
+        double x0,y0,x1,y1,x2,y2,x3,y3;
+        cin>>x0>>y0>>x1>>y1>>x2>>y2>>x3>>y3;
+        printf("%.9f\n",distSS({x0,y0},{x1,y1},{x2,y2},{x3,y3}));
+    }
+    return 0;
 }
