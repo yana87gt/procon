@@ -77,18 +77,20 @@ int inConvex(Point p, const VP& ps) {
 
 const double INF = 1e9;
 
+#define cv_edge(CV,i) CV[i],CV[(i+1)%CV.size()]
+
 int main(void){
     int N;
     while(cin>>N,N){
         vector<int> NV(N+2),H(N+2);
-        vector<VP> cv(N+2,VP());
+        vector<VP> ch(N+2,VP());
         rep(i,N){
             cin>>NV[i]>>H[i];
-            cv[i] = VP(2*NV[i]);        
+            ch[i] = VP(2*NV[i]);        
             rep(j,NV[i]){
                 double x,y;
                 cin>>x>>y;
-                cv[i][j]={x,y};
+                ch[i][j]={x,y};
             }
         }
         
@@ -99,25 +101,25 @@ int main(void){
 
         rep(i,N){
             rep(j,NV[i]){
-                cv[i][j+NV[i]] = cv[i][j] - polar(H[i]/tan(phi),theta);
+                ch[i][j+NV[i]] = ch[i][j] - polar(H[i]/tan(phi),theta);
             }
-            cv[i] = convexHull(cv[i]);
+            ch[i] = convexHull(ch[i]);
         }
 
         N += 2;
-        cv[N-1] = {{sx,sy}};
-        cv[N-2] = {{tx,ty}};
+        ch[N-1] = {{sx,sy}};
+        ch[N-2] = {{tx,ty}};
     
         vector<vector<double>> d(N,vector<double>(N,INF));
-        rep(i,N)rep(j,cv[i].size()){
-            rep(k,N-2)rep(l,cv[k].size()){
+        rep(i,N)rep(j,ch[i].size()){
+            rep(k,N-2)rep(l,ch[k].size()){
                 //凸包iの点j（もしくは点s,t）と 凸包kの辺(l,l+1) の距離
                 d[i][k] = d[k][i] = 
-                    min(d[i][k],distSP(cv[k][l], cv[k][(l+1)%cv[k].size()], cv[i][j]));
+                    min(d[i][k],distSP(cv_edge(ch[k],l),ch[i][j]));
             }
             rep(k,N-2){
                 //凸包iの点j（もしくは点s,t）が 凸包kの内部にいる
-                if(inConvex(cv[i][j], cv[k])){
+                if(inConvex(ch[i][j], ch[k])){
                     d[i][k] = d[k][i] = 0;
                 }
             }
@@ -126,7 +128,7 @@ int main(void){
         rep(k,N)rep(i,N)rep(j,N)
             d[i][j] = min(d[i][j], d[i][k]+d[k][j]);
 
-        printf("%.9f\n",min(d[N-1][N-2],abs(cv[N-1][0]-cv[N-2][0])));
+        printf("%.9f\n",min(d[N-1][N-2],abs(ch[N-1][0]-ch[N-2][0])));
     }
     return 0;
 }

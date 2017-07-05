@@ -76,7 +76,7 @@ bool isecLS(Point a1, Point a2, Point b1, Point b2) {
 // 線分と線分
 bool isecSS(Point a1, Point a2, Point b1, Point b2) {
   return ccw(a1, a2, b1)*ccw(a1, a2, b2) <= 0 &&
-         ccw(b1, b2, a1)*ccw(b1, b2, a2) <= 0;
+  ccw(b1, b2, a1)*ccw(b1, b2, a2) <= 0;
 }
 
 // 線分と点
@@ -114,13 +114,14 @@ double distLS(Point a1, Point a2, Point b1, Point b2) {
 double distSP(Point a1, Point a2, Point p) {
   Point r = proj(a1, a2, p);
   if (isecSP(a1, a2, r)) return abs(r-p);
+  //= !ccw(a1, a2, r)
   return min(abs(a1-p), abs(a2-p));
 }
 
 double distSS(Point a1, Point a2, Point b1, Point b2) {
   if (isecSS(a1, a2, b1, b2)) return 0;
   return min(min(distSP(a1, a2, b1), distSP(a1, a2, b2)),
-             min(distSP(b1, b2, a1), distSP(b1, b2, a2)));
+   min(distSP(b1, b2, a1), distSP(b1, b2, a2)));
 }
 
 // 2直線の交点
@@ -128,7 +129,7 @@ Point crosspointLL(Point a1, Point a2, Point b1, Point b2) {
   double d1 = cross(b2-b1, b1-a1);
   double d2 = cross(b2-b1, a2-a1);
   if (EQ(d1, 0) && EQ(d2, 0)) return a1;  // same line
-  if (EQ(d2, 0)) throw "kouten ga nai";   // 交点がない
+  assert(!EQ(d2, 0)); // 交点がない
   return a1 + d1/d2 * (a2-a1);
 }
 
@@ -275,6 +276,10 @@ namespace std {
     return a.X != b.X ? a.X < b.X : a.Y < b.Y;
   }
 }
+
+
+#define cv_edge(CV,i) CV[i],CV[(i+1)%CV.size()]
+#define distPP(p1,p2) abs(p1-p2)
 
 // 凸包
 VP convexHull(VP ps) {  // 元の点集合がソートされていいならVP&に
@@ -498,16 +503,16 @@ vector<Line> mergeSegments(vector<Line> segs) {
   rep (i,n) rep (j,i) {
     Line &l1 = segs[i], &l2 = segs[j];
     if (EQ(cross(l1.second-l1.first, l2.second-l2.first), 0)
-        && isecLP(l1.first, l1.second, l2.first)
-        && ccw   (l1.first, l1.second, l2.second) != 2
-        && ccw   (l2.first, l2.second, l1.second) != 2) {
+      && isecLP(l1.first, l1.second, l2.first)
+      && ccw   (l1.first, l1.second, l2.second) != 2
+      && ccw   (l2.first, l2.second, l1.second) != 2) {
       segs[j] = Line(min(l1.first, l2.first), max(l1.second, l2.second));
-      segs[i--] = segs[--n];
-      break;
-    }
+    segs[i--] = segs[--n];
+    break;
   }
-  segs.resize(n);
-  return segs;
+}
+segs.resize(n);
+return segs;
 }
 
 

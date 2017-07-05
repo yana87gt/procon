@@ -6,31 +6,61 @@ using namespace std;
 #define lb(s,x) lower_bound(all(s),x)-s.begin()
 #define debug(x) cout<<#x<<": "<<x<<endl
 typedef long long ll;
-struct Point{
-    double x,y;
-    bool operator<(const Point& right)const{
-        return (x==right.x ? y<right.y : x<right.x);
+
+template<typename Type>
+
+class BIT {
+    public: //1-index
+    vector<Type> bit;
+    int n;
+    BIT(int size){
+        n = size+1;
+        bit = vector<Type>(n+1,0);
+    }
+
+    void add(int i,Type x){
+        while(i<=n){
+            printf("add : i=%d x=%lld\n",i,x );
+            bit[i] += x;
+            i += i&-i;
+        }
+    }
+
+    Type sum(int i){
+        int ret=0;
+        while(i>0){
+            printf("sum : i=%d\n",i);
+            ret += bit[i];
+            i -= i&-i;
+        }
+        return ret;
+    }
+
+    Type range(int l,int r){
+        return sum(r)-sum(l-1);
     }
 };
 
 int main(void){
-    ll N,K;
+    ll N,K,a,sum=0;
     cin>>N>>K;
-    vector<int> a(N),s(N+1);
-    rep(i,N)cin>>a[i], s[i+1]=s[i]+a[i];
+    vector<pair<ll,int>> b(N+1);
+    rep(j,N){
+        cin>>a;
+        b[j]={sum-j*K,j};
+        sum+=a;
+    }
+    b[N]={sum-N*K,N};
 
-    ll r=1,sum=0,res=0;
-    rep(l,N){
-        while(r<N && sum<K*(r-l)){
-            sum+=a[r++];
-            printf("[l,r)=[%d,%lld) , sum=%lld\n",l,r,sum );
-        }
-
-        res+=r-l-1;
-        printf("r-l-1=%lld , res=%lld\n",r-l-1,res);
-        sum-=a[l];
+    sort(all(b));
+    BIT<int> bit(N);
+    ll res=0;
+    cout<<"bit created"<<endl;
+    rep1(i,N){
+        res += bit.sum(b[i].second);
+        bit.add(b[i].second,1);
     }
     cout<<res<<endl;
-    
+
     return 0;
 }
