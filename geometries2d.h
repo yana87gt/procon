@@ -278,7 +278,7 @@ namespace std {
 }
 
 
-#define cv_edge(CV,i) CV[i],CV[(i+1)%CV.size()]
+#define ps_edge(PS,i) PS[i],PS[(i+1)%PS.size()]
 #define distPP(p1,p2) abs(p1-p2)
 
 // 凸包
@@ -356,6 +356,11 @@ int inPolygon(const VP& ps, Point p) {
   return in;
 }
 
+
+//ベクトル(a1->a2)で凸多角形psを切断したときの
+//ベクトルの左側の凸多角形を返す
+//参考 http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_C
+
 // 凸多角形クリッピング
 VP convexCut(const VP& ps, Point a1, Point a2) {
   int n = ps.size();
@@ -394,6 +399,42 @@ double area(const VP& ps) {
   rep (i, ps.size()) a += cross(ps[i], ps[(i+1) % ps.size()]);
   return a / 2;
 }
+
+
+/* -------------最近点対の距離------------ */
+bool compX(const Point a, const Point b) {
+  return a.X<b.X;
+}
+
+bool compY(const Point a, const Point b) {
+  return a.Y<b.Y;
+}
+
+double closestPair(VP &a,int l,int r) {
+  if(r-l<=1) return INF;
+  int m = (l+r)/2;
+  double x = a[m].X;
+  double d = min(closestPair(a,l,m),closestPair(a,m,r));
+  inplace_merge(a.begin()+l,a.begin()+m,a.begin()+r,compY);
+  
+  VP b;
+  for(int i=l;i<r;i++){
+    if(abs(a[i].X - x)>=d)continue;
+    for(int j=b.size()-1;j>=0;j--){
+      if((a[i]-b[j]).Y>=d)break;
+      d = min(d,abs(a[i]-b[j]));
+    }
+    b.push_back(a[i]);
+  }
+  return d;
+}
+
+double closestPair(VP ps){
+  sort(ps.begin(),ps.end(),compX);
+  return closestPair(ps,0,ps.size());
+}
+/* ------------------------------------- */
+
 
 // 多角形の幾何学的重心
 Point centroid(const VP& ps) {
