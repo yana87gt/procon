@@ -17,12 +17,12 @@ bool compY(const Point a, const Point b) {
     return a.Y<b.Y;
 }
 
-double closestPair(VP &a,int l,int r) {
+double closestPair(VP& a,int l,int r) {
     if(r-l<=1) return INF;
     int m = (l+r)/2;
     double x = a[m].X;
     double d = min(closestPair(a,l,m),closestPair(a,m,r));
-    inplace_merge(a.begin()+l,a.begin()+m,a.begin()+r,compY);
+    inplace_merge(a.begin()+l, a.begin()+m, a.begin()+r, compY);
     
     VP b;
     for(int i=l;i<r;i++){

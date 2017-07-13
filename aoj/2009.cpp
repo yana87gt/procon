@@ -1,45 +1,70 @@
 #include <bits/stdc++.h>
 using namespace std;
+#define debug(x) cout<<#x<<": "<<x<<endl
 #define rep(i,n) for(int i=0;i<n;++i)
-#define eps 1e-10
-struct Point{double x,y;};
-bool comp(Point a,Point b) {return (a.x==b.x ? a.y<b.y : a.x<b.x);}
-double dist(Point a,Point b) {return sqrt(pow(a.x-b.x,2)+pow(a.y-b.y,2));}
+#define EPS 1e-9
+typedef complex<double> Point;
+typedef vector<Point> VP;
+typedef pair<Point, Point> Line;
+#define X real()
+#define Y imag()
+#define EQ(n,m) (abs((n)-(m)) < EPS)
 
-bool Intersection(Point p1,Point p2,Point p3,Point p4,Point *ret){
-    double d = (p2.x-p1.x)*(p4.y-p3.y)-(p2.y-p1.y)*(p4.x-p3.x);
-    double u = ((p3.x-p1.x)*(p4.y-p3.y)-(p3.y-p1.y)*(p4.x-p3.x))/d;
-    double v = ((p3.x-p1.x)*(p2.y-p1.y)-(p3.y-p1.y)*(p2.x-p1.x))/d;
-    if(d==0 || u<=0 || u>=1 || v<=0 || v>=1)return false;
-    ret->x = p1.x+u*(p2.x-p1.x);
-    ret->y = p1.y+u*(p2.y-p1.y);
-    return true;
+namespace std {
+  bool operator<(const Point a, const Point b) {
+    return a.X != b.X ? a.X < b.X : a.Y < b.Y;
+  }
+}
+
+double dot(Point a, Point b) {
+  return a.X*b.X + a.Y*b.Y;
+}
+
+double cross(Point a, Point b) {
+  return a.X*b.Y - a.Y*b.X;
+}
+
+int ccw(Point a, Point b, Point c) {
+  b -= a;  c -= a;
+  if (cross(b,c) >  EPS) return +1;  // counter clockwise
+  if (cross(b,c) < -EPS) return -1;  // clockwise
+  if (dot(b,c)   < -EPS) return +2;  // c--a--b on line
+  if (norm(b) < norm(c)) return -2;  // a--b--c on line or a==b
+  return 0;                          // a--c--b on line or a==c or b==c
+}
+
+bool isecSS(Point a1, Point a2, Point b1, Point b2) {
+  return ccw(a1, a2, b1)*ccw(a1, a2, b2) <= 0 &&
+  ccw(b1, b2, a1)*ccw(b1, b2, a2) <= 0;
+}
+
+Point crosspointLL(Point a1, Point a2, Point b1, Point b2) {
+  double d1 = cross(b2-b1, b1-a1);
+  double d2 = cross(b2-b1, a2-a1);
+  if (EQ(d1, 0) && EQ(d2, 0)) return a1;  // same line
+  assert(!EQ(d2, 0)); // 交点がない
+  return a1 + d1/d2 * (a2-a1);
 }
 
 int main(void){
     int n;
     while(cin>>n,n){
-        int division=1;
-        vector<Point> p1(n);
-        vector<Point> p2(n);
+        vector<Line> ls(n);
+        int crosscnt=0;
         rep(i,n){
-            cin>>p1[i].x>>p1[i].y>>p2[i].x>>p2[i].y;
-            vector<Point> cross;
+            double p1x,p1y,p2x,p2y;
+            cin>>p1x>>p1y>>p2x>>p2y;
+            ls[i] = {{p1x,p1y},{p2x,p2y}};
+            set<Point> cp;
             rep(j,i){
-                Point ret;
-                if(Intersection(p1[i],p2[i],p1[j],p2[j],&ret)){
-                    cross.push_back(ret);
+                if(isecSS(ls[i].first,ls[i].second,ls[j].first,ls[j].second)){
+                    Point p = crosspointLL(ls[i].first,ls[i].second,ls[j].first,ls[j].second);
+                    if(abs(p.X)<100 && abs(p.Y)<100) cp.insert(p);
                 }
             }
-            sort(cross.begin(),cross.end(),comp);
-            int cnt=1;
-            if(cross.size()==0)cnt=0;
-            for(int j=0;j+1<cross.size();j++){
-                cnt+=(dist(cross[j],cross[j+1])>=eps);
-            }
-            division += cnt+1;
+            crosscnt += (int)cp.size();
         }
-        cout<<division<<endl;
+        cout<<n+crosscnt+1<<endl;
     }
 
     return 0;

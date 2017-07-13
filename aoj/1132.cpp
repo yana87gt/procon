@@ -1,31 +1,43 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define rep(i,n) for(int i=0;i<n;++i)
-struct Point{double x,y;};
-double dist(Point a,Point b) {return sqrt(pow(a.x-b.x,2)+pow(a.y-b.y,2));}
+typedef complex<double> Point;
+typedef vector<Point> VP;
+#define X real()
+#define Y imag()
+
+// 点aと点bを通り、半径がrの円の中心を返す
+VP circlesPointsRadius(Point a, Point b, double r) {
+  VP cs;
+  Point abH = (b-a)*0.5;
+  double d = abs(abH);
+  if (d == 0 || d > r) return cs;
+  double dN = sqrt(r*r - d*d);
+  Point n = abH * Point(0,1) * (dN / d);
+  cs.push_back(a + abH + n);
+  if (dN > 0) cs.push_back(a + abH - n);
+  return cs;
+}
 
 int main(void){
     int N;
     while(cin>>N,N){
-        vector<Point> p(N);
-        int maxcnt=1;
-        rep(i,N)cin>>p[i].x>>p[i].y;
+        VP p(N);
+        int res=1;
         rep(i,N){
-            for(int j=i+1;j<N;j++){
-                double d = dist(p[i],p[j]);
-                if(d>2.0)continue;
-                int sign[]={-1,1};
-                rep(s,2){
-                    Point C;
-                    C.x = p[i].x + cos(atan2(p[j].y-p[i].y,p[j].x-p[i].x) + sign[s]*acos(d/2.0));
-                    C.y = p[i].y + sin(atan2(p[j].y-p[i].y,p[j].x-p[i].x) + sign[s]*acos(d/2.0));
-                    int cnt=0;
-                    rep(k,N) cnt += (pow(C.x-p[k].x,2) + pow(C.y-p[k].y,2) <= 1.0001);
-                    if(maxcnt<cnt)maxcnt=cnt;
-                }
+            double x,y;
+            cin>>x>>y;
+            p[i] = {x,y};
+        }
+        rep(i,N)rep(j,i){
+            VP cs = circlesPointsRadius(p[i],p[j],1.0);
+            for(Point c:cs){
+                int cnt=0;
+                rep(k,N) if(abs(c-p[k]) <= 1.0001)cnt++;
+                res=max(res,cnt);
             }
         }
-        cout<<maxcnt<<endl;
+        cout<<res<<endl;
     }
 
     return 0;

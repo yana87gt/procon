@@ -2,28 +2,17 @@
 //上のものを下の資料などを元に変更
 //https://github.com/not522/library/blob/master/geometry2D/geometry2D.h
 
-
 #include <bits/stdc++.h>
 using namespace std;
 #define rep(i,n) for (int i=0; i < int(n); i++)
 
-
-// 主に以下の資料を参考に作成した。
-// - http://www.prefield.com/algorithm
-// - http://www.deqnotes.net/acmicpc/2d_geometry/
-// - https://github.com/infnty/acm/tree/master/lib/geometry
-// - サークルの先輩が作ったライブラリ
-
 /* 基本要素 */
-typedef complex<double> Point;  // Point
-typedef pair<Point, Point> Line;  // Line
+typedef complex<double> Point;
+typedef pair<Point, Point> Line;
 typedef vector<Point> VP;
-const double EPS = 1e-9;    // 許容誤差。問題によって変える
-
-//小文字x,yだと他の変数x,yと衝突してしまうので大文字
+const double EPS = 1e-9; // 許容誤差^2
 #define X real()
 #define Y imag()
-
 #define LE(n,m) ((n) < (m) + EPS)
 #define GE(n,m) ((n) + EPS > (m))
 #define EQ(n,m) (abs((n)-(m)) < EPS)
@@ -49,8 +38,9 @@ int ccw(Point a, Point b, Point c) {
 }
 
 /* 
-  交差判定　直線・線分は縮退してはならない。接する場合は交差するとみなす。
-  縮退している = 2つのものが区別付かない状態
+  交差判定　直線・線分は縮退してはならない。
+  接する場合は交差するとみなす。
+  縮退している = 2つのものが区別付かない状態(?)
   isec = intersect
   L = Line
   P = Point
@@ -98,6 +88,7 @@ Point reflection(Point a1, Point a2, Point p) {
 }
 
 //点aと点bの距離は abs(a-b)
+//#define distPP(p1,p2) abs(p1-p2)
 
 double distLP(Point a1, Point a2, Point p) {
   return abs(proj(a1, a2, p) - p);
@@ -150,7 +141,8 @@ double distSC(Point a1, Point a2, Point c, double r) {
 VP crosspointLC(Point a1, Point a2, Point c, double r) {
   VP ps;
   Point ft = proj(a1, a2, c);
-  if (!GE(r*r, norm(ft-c))) return ps;
+  if (r*r < norm(ft-c)) return ps;
+  //if(!GE(r*r,norm(ft-c))) <- buggy
 
   Point dir = sqrt(max(r*r - norm(ft-c), 0.0)) / abs(a2-a1) * (a2-a1);
   ps.push_back(ft + dir);
@@ -176,6 +168,17 @@ VP crosspointCC(Point a, double ar, Point b, double br) {
   ps.push_back(cp + abN);
   if (!EQ(norm(abN), 0)) ps.push_back(cp - abN);
   return ps;
+}
+
+// 2円の交点(自作)
+VP crosspointCC(Point a, double ar, Point b, double br){
+  double d = abs(b-a);
+  if(abs(ar-br)>d || abs(ar+br)<d) return {};
+  double t = acos(double((d*d+ar*ar-br*br)/(2*d*ar)));
+  Point p1 = a+polar(ar,arg(b-a)+t);
+  Point p2 = a+polar(ar,arg(b-a)-t);
+  if(abs(p1-p2) < EPS) return {p1};
+  return {p1,p2};
 }
 
 // 点pから円aへの接線の接点
@@ -277,9 +280,8 @@ namespace std {
   }
 }
 
-
+//多角形PSのi番目の辺
 #define ps_edge(PS,i) PS[i],PS[(i+1)%PS.size()]
-#define distPP(p1,p2) abs(p1-p2)
 
 // 凸包
 VP convexHull(VP ps) {  // 元の点集合がソートされていいならVP&に
@@ -295,6 +297,7 @@ VP convexHull(VP ps) {  // 元の点集合がソートされていいならVP&�
 }
 
 // 凸判定。縮退を認めないならccwの判定部分を != 1 とする
+// 反時計か分からなければreverse(ps)も試す（コピー渡し）
 bool isCcwConvex(const VP& ps) {
   int n = ps.size();
   rep (i, n) if (ccw(ps[i], ps[(i+1) % n], ps[(i+2) % n]) == -1) return false;
@@ -393,6 +396,15 @@ pair<int, int> convexDiameter(const VP& ps) {
   return make_pair(maxI, maxJ);
 }
 
+
+// aからbへの回転角（中心(0,0)）[-pi,+pi]
+double angle(Point a,Point b){
+  double t = arg(b)-arg(a);
+  while(t>+M_PI) t-=2*M_PI;
+  while(t<-M_PI) t+=2*M_PI;
+  return t;
+}
+
 // 多角形の符号付面積
 double area(const VP& ps) {
   double a = 0;
@@ -403,19 +415,19 @@ double area(const VP& ps) {
 
 /* -------------最近点対の距離------------ */
 bool compX(const Point a, const Point b) {
-  return a.X<b.X;
+  return (a.X!=b.X ? a.X<b.X : a.Y<b.Y);
 }
 
 bool compY(const Point a, const Point b) {
-  return a.Y<b.Y;
+  return (a.Y!=b.Y ? a.Y<b.Y : a.X<b.X);
 }
 
-double closestPair(VP &a,int l,int r) {
+double closestPair(VP& a,int l,int r) {
   if(r-l<=1) return INF;
   int m = (l+r)/2;
   double x = a[m].X;
   double d = min(closestPair(a,l,m),closestPair(a,m,r));
-  inplace_merge(a.begin()+l,a.begin()+m,a.begin()+r,compY);
+  inplace_merge(a.begin()+l, a.begin()+m, a.begin()+r, compY);
   
   VP b;
   for(int i=l;i<r;i++){
