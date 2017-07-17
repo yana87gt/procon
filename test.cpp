@@ -2,6 +2,8 @@
 using namespace std;
 #define rep(i,n) for(int i=0;i<n;++i)
 #define rep1(i,n) for(int i=1;i<=n;++i)
+#define debug(x) cout<<#x<<": "<<x<<endl
+
 typedef complex<double> Point;
 typedef vector<Point> VP;
 #define X real()
@@ -35,23 +37,50 @@ int ccw(Point a, Point b, Point c) {
     return 0;                          // a--c--b on line or a==c or b==c
 }
 
-// 2円の交点(自作)
-VP crosspointCC(Point a, double ar, Point b, double br){
-  double d = abs(b-a);
-  if(abs(ar-br)>d || abs(ar+br)<d) return {};
-  double t = acos(double((d*d+ar*ar-br*br)/(2*d*ar)));
-  Point p1 = a+polar(ar,arg(b-a)+t);
-  Point p2 = a+polar(ar,arg(b-a)-t);
-  if(abs(p1-p2) < EPS) return {p1};
-  return {p1,p2};
+
+Point proj(Point a1, Point a2, Point p) {
+  return a1 + dot(a2-a1, p-a1)/norm(a2-a1) * (a2-a1);
+}
+
+
+VP convexHull(VP ps) {  // 元の点集合がソートされていいならVP&に
+  int n = ps.size(), k = 0;
+  sort(ps.begin(), ps.end());
+  VP ch(2*n);
+  for (int i = 0; i < n; ch[k++] = ps[i++]) // lower-hull
+    while (k >= 2 && ccw(ch[k-2], ch[k-1], ps[i]) <= 0) --k;  // 余計な点も含むなら == -1 とする
+  for (int i = n-2, t = k+1; i >= 0; ch[k++] = ps[i--]) // upper-hull
+    while (k >= t && ccw(ch[k-2], ch[k-1], ps[i]) <= 0) --k;
+  ch.resize(k-1);
+  return ch;
+}
+
+void test(){
+    VP v1 = convexHull({Point(3,4),Point(3,4),Point(3,4),Point(3,4),Point(3,3)});
+    for(auto p:v1)cout<<p;
+    cout<<endl;
+    VP v2 = convexHull({Point(1,2),Point(1,3)});
+    for(auto p:v2)cout<<p;
+    cout<<endl;
+}
+
+double areaCC(Point a, double ar, Point b, double br) {
+  double d = abs(a-b);
+  if (ar + br - d <= EPS) {
+    return 0.0;
+  } else if (d - abs(ar-br)<= EPS) {
+    double r = min(ar,br);
+    return r * r * M_PI;
+  } else {
+    double rc = (d*d + ar*ar - br*br) / (2*d);
+    double theta = acos(rc / ar);
+    double phi = acos((d - rc) / br);
+    return ar*ar*theta + br*br*phi - d*ar*sin(theta);
+  }
 }
 
 int main(void){
-    VP vp = {{1000,500},{1000,515-3}};
-    VP cp = crosspointCC(vp[0],10,vp[1],5);
-    for(auto p:cp){
-        cout<<p<<endl;
-    }
-
+//    test();
+    cout<<areaCC(Point(0,0),5.0,Point(5,5),5.0)<<endl;
     return 0;
 }

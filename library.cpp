@@ -23,6 +23,18 @@ long long com(int n, int r){
     else return  C[n][r] = C[n][n-r] = com(n-1,r-1) + com(n-1,r);
 }
 
+vector<string> split(string s,string d) {
+    vector<string> elems;
+    s += d;
+    int r;
+    for(int l=0; l<int(s.size()); l=r+d.size()){
+        r = s.find(d,l);
+        string item = s.substr(l,r-l);
+        if(item!="") elems.push_back(item);
+    }
+    return elems;
+}
+
 void print_char(){
     char c=0;
     rep(i,256){

@@ -6,6 +6,9 @@ typedef complex<double> Point;
 typedef vector<Point> VP;
 #define X real()
 #define Y imag()
+const double EPS = 1e-12;
+
+#define GE(n,m) (EPS > (m) - (n) )
 
 double dot(Point a, Point b) {
   return a.X*b.X + a.Y*b.Y;
@@ -18,7 +21,7 @@ Point proj(Point a1, Point a2, Point p) {
 VP crosspointLC(Point a1, Point a2, Point c, double r) {
   VP ps;
   Point ft = proj(a1, a2, c);
-  assert(r*r >= norm(ft-c));
+  if(!GE(r*r,norm(ft-c))) assert(false);
   Point dir = sqrt(max(r*r - norm(ft-c), 0.0)) / abs(a2-a1) * (a2-a1);
   ps.push_back(ft + dir);
   ps.push_back(ft - dir);

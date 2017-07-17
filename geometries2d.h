@@ -11,10 +11,13 @@ typedef complex<double> Point;
 typedef pair<Point, Point> Line;
 typedef vector<Point> VP;
 const double EPS = 1e-9; // 許容誤差^2
+const double INF = 1e9;
 #define X real()
 #define Y imag()
-#define LE(n,m) ((n) < (m) + EPS)
-#define GE(n,m) ((n) + EPS > (m))
+// #define LE(n,m) ((n) < (m) + EPS)
+#define LE(n,m) ((n) - (m) < EPS)
+// #define GE(n,m) ((n) + EPS > (m))
+#define GE(n,m) (EPS > (m) - (n))
 #define EQ(n,m) (abs((n)-(m)) < EPS)
 
 // 内積　dot(a,b) = |a||b|cosθ
@@ -141,9 +144,7 @@ double distSC(Point a1, Point a2, Point c, double r) {
 VP crosspointLC(Point a1, Point a2, Point c, double r) {
   VP ps;
   Point ft = proj(a1, a2, c);
-  if (r*r < norm(ft-c)) return ps;
-  //if(!GE(r*r,norm(ft-c))) <- buggy
-
+  if(!GE(r*r,norm(ft-c))) return ps;
   Point dir = sqrt(max(r*r - norm(ft-c), 0.0)) / abs(a2-a1) * (a2-a1);
   ps.push_back(ft + dir);
   if (!EQ(r*r, norm(ft-c))) ps.push_back(ft - dir);
@@ -169,7 +170,7 @@ VP crosspointCC(Point a, double ar, Point b, double br) {
   if (!EQ(norm(abN), 0)) ps.push_back(cp - abN);
   return ps;
 }
-
+/*
 // 2円の交点(自作)
 VP crosspointCC(Point a, double ar, Point b, double br){
   double d = abs(b-a);
@@ -180,6 +181,7 @@ VP crosspointCC(Point a, double ar, Point b, double br){
   if(abs(p1-p2) < EPS) return {p1};
   return {p1,p2};
 }
+*/
 
 // 点pから円aへの接線の接点
 VP tangentPoints(Point a, double ar, Point p) {
@@ -284,6 +286,8 @@ namespace std {
 #define ps_edge(PS,i) PS[i],PS[(i+1)%PS.size()]
 
 // 凸包
+// 入力1個 -> 空
+// 2個以上の全て同じ点 -> 同じもの2つ
 VP convexHull(VP ps) {  // 元の点集合がソートされていいならVP&に
   int n = ps.size(), k = 0;
   sort(ps.begin(), ps.end());
@@ -360,6 +364,19 @@ int inPolygon(const VP& ps, Point p) {
 }
 
 
+bool inPolygon(Point p,VP& ps){
+  int n = ps.size();
+  double sumAngle=0;
+  rep(i,n){
+    double t = arg(ps[(i+1)%n]-p)-arg(ps[i]-p);
+    while(t>+M_PI) t-=2*M_PI;
+    while(t<-M_PI) t+=2*M_PI;
+    sumAngle += t;
+  }
+  return (abs(sumAngle) > 0.1);
+}
+
+
 //ベクトル(a1->a2)で凸多角形psを切断したときの
 //ベクトルの左側の凸多角形を返す
 //参考 http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_C
@@ -412,6 +429,20 @@ double area(const VP& ps) {
   return a / 2;
 }
 
+double areaCC(Point a, double ar, Point b, double br) {
+  double d = abs(a-b);
+  if (ar + br - d <= EPS) {
+    return 0.0;
+  } else if (d - abs(ar-br)<= EPS) {
+    double r = min(ar,br);
+    return r * r * M_PI;
+  } else {
+    double rc = (d*d + ar*ar - br*br) / (2*d);
+    double theta = acos(rc / ar);
+    double phi = acos((d - rc) / br);
+    return ar*ar*theta + br*br*phi - d*ar*sin(theta);
+  }
+}
 
 /* -------------最近点対の距離------------ */
 bool compX(const Point a, const Point b) {
