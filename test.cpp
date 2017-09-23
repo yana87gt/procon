@@ -79,8 +79,15 @@ double areaCC(Point a, double ar, Point b, double br) {
   }
 }
 
+long long fact(int n){
+  if(n==0)return 1;
+  return n*fact(n-1);
+}
+
 int main(void){
 //    test();
-    cout<<areaCC(Point(0,0),5.0,Point(5,5),5.0)<<endl;
+    //cout<<areaCC(Point(0,0),5.0,Point(5,5),5.0)<<endl;
+
+    rep(i,100)cout<<fact(i)<<endl;
     return 0;
 }
