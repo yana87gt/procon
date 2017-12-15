@@ -591,12 +591,12 @@ vector<Line> mergeSegments(vector<Line> segs) {
       && ccw   (l1.first, l1.second, l2.second) != 2
       && ccw   (l2.first, l2.second, l1.second) != 2) {
       segs[j] = Line(min(l1.first, l2.first), max(l1.second, l2.second));
-    segs[i--] = segs[--n];
-    break;
+      segs[i--] = segs[--n];
+      break;
+    }
   }
-}
-segs.resize(n);
-return segs;
+  segs.resize(n);
+  return segs;
 }
 
 

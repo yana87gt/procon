@@ -1,0 +1,141 @@
+ i=0, ct 2
+ i=1, ct 3
+ i=2, ct 3
+ m= 15000000001, ct = 3
+ i=0, ct 2
+ i=1, ct 3
+ i=2, ct 3
+ m= 7500000000, ct = 3
+ i=0, ct 2
+ i=1, ct 3
+ i=2, ct 3
+ m= 3750000000, ct = 3
+ i=0, ct 2
+ i=1, ct 3
+ i=2, ct 3
+ m= 1875000000, ct = 3
+ i=0, ct 2
+ i=1, ct 3
+ i=2, ct 3
+ m= 937500000, ct = 3
+ i=0, ct 2
+ i=1, ct 3
+ i=2, ct 3
+ m= 468750000, ct = 3
+ i=0, ct 2
+ i=1, ct 3
+ i=2, ct 3
+ m= 234375000, ct = 3
+ i=0, ct 2
+ i=1, ct 3
+ i=2, ct 3
+ m= 117187500, ct = 3
+ i=0, ct 2
+ i=1, ct 3
+ i=2, ct 3
+ m= 58593750, ct = 3
+ i=0, ct 2
+ i=1, ct 3
+ i=2, ct 3
+ m= 29296875, ct = 3
+ i=0, ct 2
+ i=1, ct 3
+ i=2, ct 3
+ m= 14648437, ct = 3
+ i=0, ct 2
+ i=1, ct 3
+ i=2, ct 3
+ m= 7324218, ct = 3
+ i=0, ct 2
+ i=1, ct 3
+ i=2, ct 3
+ m= 3662109, ct = 3
+ i=0, ct 2
+ i=1, ct 3
+ i=2, ct 3
+ m= 1831054, ct = 3
+ i=0, ct 2
+ i=1, ct 3
+ i=2, ct 3
+ m= 915527, ct = 3
+ i=0, ct 2
+ i=1, ct 3
+ i=2, ct 3
+ m= 457763, ct = 3
+ i=0, ct 2
+ i=1, ct 3
+ i=2, ct 3
+ m= 228881, ct = 3
+ i=0, ct 2
+ i=1, ct 3
+ i=2, ct 3
+ m= 114440, ct = 3
+ i=0, ct 2
+ i=1, ct 3
+ i=2, ct 3
+ m= 57220, ct = 3
+ i=0, ct 2
+ i=1, ct 3
+ i=2, ct 3
+ m= 28610, ct = 3
+ i=0, ct 2
+ i=1, ct 3
+ i=2, ct 3
+ m= 14305, ct = 3
+ i=0, ct 2
+ i=1, ct 3
+ i=2, ct 3
+ m= 7152, ct = 3
+ i=0, ct 2
+ i=1, ct 3
+ i=2, ct 3
+ m= 3576, ct = 3
+ i=0, ct 2
+ i=1, ct 3
+ i=2, ct 3
+ m= 1788, ct = 3
+ i=0, ct 2
+ i=1, ct 3
+ i=2, ct 3
+ m= 894, ct = 3
+ i=0, ct 2
+ i=1, ct 3
+ i=2, ct 3
+ m= 447, ct = 3
+ i=0, ct 2
+ i=1, ct 3
+ i=2, ct 3
+ m= 223, ct = 3
+ i=0, ct 2
+ i=1, ct 3
+ i=2, ct 3
+ m= 111, ct = 3
+ i=0, ct 2
+ i=1, ct 3
+ i=2, ct 3
+ m= 55, ct = 3
+ i=0, ct 2
+ i=1, ct 3
+ i=2, ct 3
+ m= 27, ct = 3
+ i=0, ct 0
+ i=1, ct 0
+ i=2, ct 0
+ m= 13, ct = 0
+ i=0, ct 2
+ i=1, ct 3
+ i=2, ct 3
+ m= 20, ct = 3
+ i=0, ct 1
+ i=1, ct 1
+ i=2, ct 1
+ m= 16, ct = 1
+ i=0, ct 1
+ i=1, ct 2
+ i=2, ct 2
+ m= 18, ct = 2
+ i=0, ct 1
+ i=1, ct 1
+ i=2, ct 1
+ m= 17, ct = 1
+18
