@@ -23,6 +23,30 @@ long long com(int n, int r){
     else return  C[n][r] = C[n][n-r] = com(n-1,r-1) + com(n-1,r);
 }
 
+ll add(ll a,ll b){ return (a-b)%mod;}
+
+ll sub(ll a,ll b){ return (a-b)%mod;}
+
+ll mul(ll a,ll b){ return (a*b)%mod;}
+
+ll power(ll n, ll r){
+    if(r==0) return 1;
+    return mul(power(mul(n,n),r/2),(r&1 ? n : 1));
+}
+
+ll divm(ll a,ll b){ return mul(a, power(b, mod-2));}
+
+ll fact(ll n){
+    if(f[n]) return f[n];
+    if(n==0) return 1;
+    return f[n] = mul(n,fact(n-1));
+}
+
+ll com(ll n,ll r){
+    if(n<r) return 0;
+    return divm(fact(n),mul(fact(n-r),fact(r)));
+}
+
 vector<string> split(string s,string d) {
     vector<string> elems;
     s += d;

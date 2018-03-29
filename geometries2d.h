@@ -12,6 +12,7 @@ typedef pair<Point, Point> Line;
 typedef vector<Point> VP;
 const double EPS = 1e-9; // 許容誤差^2
 const double INF = 1e9;
+const double PI = acos(-1.0);
 #define X real()
 #define Y imag()
 // #define LE(n,m) ((n) < (m) + EPS)
@@ -188,7 +189,7 @@ VP tangentPoints(Point a, double ar, Point p) {
   VP ps;
   double sin = ar / abs(p-a);
   if (!LE(sin, 1)) return ps;  // ここでNaNも弾かれる
-  double t = M_PI_2 - asin(min(sin, 1.0));
+  double t = PI/2.0 - asin(min(sin, 1.0));
   ps.push_back(                 a + (p-a)*polar(sin, t));
   if (!EQ(sin, 1)) ps.push_back(a + (p-a)*polar(sin, -t));
   return ps;
@@ -369,8 +370,8 @@ bool inPolygon(Point p,VP& ps){
   double sumAngle=0;
   rep(i,n){
     double t = arg(ps[(i+1)%n]-p)-arg(ps[i]-p);
-    while(t>+M_PI) t-=2*M_PI;
-    while(t<-M_PI) t+=2*M_PI;
+    while(t>+PI) t-=2*PI;
+    while(t<-PI) t+=2*PI;
     sumAngle += t;
   }
   return (abs(sumAngle) > 0.1);
@@ -417,8 +418,8 @@ pair<int, int> convexDiameter(const VP& ps) {
 // aからbへの回転角（中心(0,0)）[-pi,+pi]
 double angle(Point a,Point b){
   double t = arg(b)-arg(a);
-  while(t>+M_PI) t-=2*M_PI;
-  while(t<-M_PI) t+=2*M_PI;
+  while(t>+PI) t-=2*PI;
+  while(t<-PI) t+=2*PI;
   return t;
 }
 
@@ -435,7 +436,7 @@ double areaCC(Point a, double ar, Point b, double br) {
     return 0.0;
   } else if (d - abs(ar-br)<= EPS) {
     double r = min(ar,br);
-    return r * r * M_PI;
+    return r * r * PI;
   } else {
     double rc = (d*d + ar*ar - br*br) / (2*d);
     double theta = acos(rc / ar);

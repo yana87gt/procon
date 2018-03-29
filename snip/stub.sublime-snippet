@@ -1,7 +1,0 @@
-<snippet>
-	<content><![CDATA[
-printf("Debug at %s : %d\n",__func__,__LINE__);
-]]></content>
-	<tabTrigger>stub</tabTrigger>
-	<scope>source.c,source.c++</scope>
-</snippet>

@@ -1,7 +1,0 @@
-<snippet>
-	<content><![CDATA[
-bool comp(Point a,Point b) {return (a.x==b.x ? a.y<b.y : a.x<b.x);}
-]]></content>
-	<tabTrigger>comp</tabTrigger>
-	<scope>source.c++</scope>
-</snippet>

@@ -1,7 +1,0 @@
-<snippet>
-	<content><![CDATA[
-second
-]]></content>
-	<tabTrigger>second</tabTrigger>
-	<scope>source.c++</scope>
-</snippet>

@@ -1,19 +1,39 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define rep(i,n) for(int i=0;i<int(n);++i)
-#define rep1(i,n) for(int i=1;i<=int(n);++i)
-#define all(a) a.begin(),a.end()
-#define lb(s,x) lower_bound(all(s),x)-s.begin()
-#define debug(x) cout<<#x<<": "<<x<<endl
 #define INF 1e9
-typedef long long ll;
 
-int a[2];
+int a[50];
 
 int main(void){
-    int n;
+    int n,mn=INF,mn_idx,mx=-INF,mx_idx;
     cin>>n;
     rep(i,n){
-        cin>>a[i+1];
+        cin>>a[i];
+        if(mn>a[i]){
+            mn = a[i];
+            mn_idx = i;
+        }
+        if(mx<a[i]){
+            mx = a[i];
+            mx_idx = i;
+        }
     }
+    cout<<2*n-1<<endl;
+    if(abs(mn)<abs(mx)){
+        rep(i,n){
+            cout<<mx_idx+1<<" "<<i+1<<endl;
+        }
+        rep(i,n-1){
+            cout<<i+1<<" "<<i+2<<endl;
+        }
+    }else{
+        rep(i,n){
+            cout<<mn_idx+1<<" "<<i+1<<endl;
+        }
+        rep(i,n-1){
+            cout<<n-i<<" "<<n-i-1<<endl;
+        }
+    }
+
 }

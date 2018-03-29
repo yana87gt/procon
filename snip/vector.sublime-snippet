@@ -1,7 +1,0 @@
-<snippet>
-	<content><![CDATA[
-vector<${1:int}>
-]]></content>
-	<tabTrigger>vector</tabTrigger>
-	<scope>source.c++</scope>
-</snippet>
