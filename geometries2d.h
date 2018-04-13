@@ -15,9 +15,7 @@ const double INF = 1e9;
 const double PI = acos(-1.0);
 #define X real()
 #define Y imag()
-// #define LE(n,m) ((n) < (m) + EPS)
 #define LE(n,m) ((n) - (m) < EPS)
-// #define GE(n,m) ((n) + EPS > (m))
 #define GE(n,m) (EPS > (m) - (n))
 #define EQ(n,m) (abs((n)-(m)) < EPS)
 
