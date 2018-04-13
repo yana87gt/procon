@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[
+rep(${1:i},${2:N})
+]]></content>
+	<tabTrigger>rep</tabTrigger>
+	<scope>source.c++</scope>
+</snippet>

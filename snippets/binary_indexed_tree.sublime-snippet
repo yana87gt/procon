@@ -1,0 +1,38 @@
+<snippet>
+    <content><![CDATA[
+template<typename Type>
+
+class BIT {
+    public: //1-index
+    vector<Type> bit;
+    int n;
+    BIT(int size){
+        n = size+1;
+        bit = vector<Type>(n+1,0);
+    }
+
+    void add(int i,Type x){
+        while(i<=n){
+            bit[i] += x;
+            i += i&-i;
+        }
+    }
+
+    Type sum(int i){
+        int ret=0;
+        while(i>0){
+            ret += bit[i];
+            i -= i&-i;
+        }
+        return ret;
+    }
+
+    Type range(int l,int r){
+        return sum(r)-sum(l-1);
+    }
+};
+
+]]></content>
+    <tabTrigger>binary_indexed_tree</tabTrigger>
+    <scope>source.c++</scope>
+</snippet>
