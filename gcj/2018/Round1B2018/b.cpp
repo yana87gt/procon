@@ -8,25 +8,26 @@ using namespace std;
 #define INF 1e9
 typedef long long ll;
 
-// X Y
+void solve(){
+    int S;
+    cin>>S;
+    vector<int> d(S),a(S),b(S),m(S),n(S);
+    rep(i,S) {
+        cin>>d[i]>>a[i]>>b[i];
+        m[i] = d[i] + a[i];
+        n[i] = d[i] - b[i];
+    }
 
-// 取った 2i の半分iが奇数なら片方に奇数が
-// 取った 2i の半分iが偶数なら片方に偶数が
-// 足される
-
-// 1 2 , 0 4
-// 2 0
-// 0 1
-
-
-
-bool solve(ll x,ll y){
+    // rep()
 
 }
 
 int main(void){
-    ll x,y;
-    cin>>x>>y;
-    cout<<((solve(x,y)) ? "Alice" : "Brown")<<endl;
+    int T;
+    cin>>T;
+    rep(_,T){
+        printf("Case #%d: ",_+1);
+        solve();
+    }
     return 0;
 }

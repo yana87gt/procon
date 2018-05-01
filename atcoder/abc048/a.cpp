@@ -3,12 +3,8 @@ using namespace std;
 #define rep(i,n) for(int i=0;i<int(n);++i)
 
 int main(void){
-    int h,w;
-    cin>>h>>w;
-    rep(i,h){
-        string s;
-        cin>>s;
-        cout<<s<<endl<<s<<endl;
-    }
+    string s[3];
+    rep(i,3)cin>>s[i];
+    cout<<"A"<<s[1][0]<<"C"<<endl;
     return 0;
 }

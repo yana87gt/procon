@@ -1,12 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
+#define all(a) a.begin(),a.end()
 
 int main(void){
     string s;
     cin>>s;
-    for(char &c : s){
-        if(c==',') c = ' ';
-    }
-    cout<<s<<endl;
+    sort(all(s));
+    cout<<((s == "abc") ? "Yes" : "No")<<endl;
     return 0;
 }

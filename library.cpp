@@ -23,7 +23,7 @@ long long com(int n, int r){
     else return  C[n][r] = C[n][n-r] = com(n-1,r-1) + com(n-1,r);
 }
 
-ll add(ll a,ll b){ return (a-b)%mod;}
+ll add(ll a,ll b){ return (a+b)%mod;}
 
 ll sub(ll a,ll b){ return (a-b)%mod;}
 

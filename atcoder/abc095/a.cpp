@@ -3,12 +3,10 @@ using namespace std;
 #define rep(i,n) for(int i=0;i<int(n);++i)
 
 int main(void){
-    int h,w;
-    cin>>h>>w;
-    rep(i,h){
-        string s;
-        cin>>s;
-        cout<<s<<endl<<s<<endl;
-    }
+    string s;
+    cin>>s;
+    int res = 700;
+    rep(i,3) if(s[i] == 'o') res += 100;
+    cout<<res<<endl;
     return 0;
 }
