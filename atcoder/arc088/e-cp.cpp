@@ -9,7 +9,7 @@ using namespace std;
 template<typename Type>
 
 class BIT {
-    public: //1-index
+    public: // 1-index
     vector<Type> bit;
     int n;
     BIT(int size){

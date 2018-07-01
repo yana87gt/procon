@@ -3,25 +3,43 @@ using namespace std;
 #define rep(i,n) for(int i=0;i<n;++i)
 #define rep1(i,n) for(int i=1;i<=n;++i)
 #define debug(x) cout<<#x<<": "<<x<<endl
-#define pb push_back
-#define mp make_pair
 #define all(a) (a).begin(),(a).end()
+#define lb(s,x) lower_bound(all(s),x)-s.begin()
+#define ub(s,x) upper_bound(all(s),x)-s.begin()
+#define uniq(a) a.erase(unique(all(a)),a.end())
+
+template<class T,class U>
+ostream& operator<<(ostream& o, const pair<T,U> &p){
+    o<<"("<<p.first<<", "<<p.second<<")";
+    return o;
+}
+
+#define print(v) { cout<<#v<<": [ "; for(auto _ : v) cout<<_<<", "; cout<<"]"<<endl; }
+
+using MyClass = pair<int,int>;
+namespace std {
+    bool operator<(const MyClass a, const MyClass b) {
+        return a.first != b.first ? a.first < b.first : a.second < b.second;
+    }
+}
 
 typedef long long ll;
 
 int dx[4] = {1,0,-1,0};
 int dy[4] = {0,1,0,-1};
 
-int gcd(int a,int b){return b==0 ? a : gcd(b,a%b);}
-int lcm(int a,int b){return a/gcd(a,b)*b;}
+ll gcd(ll a,ll b){return b==0 ? a : gcd(b,a%b);}
+ll lcm(ll a,ll b){return a/gcd(a,b)*b;}
 
-long long C[60][60]={};
-long long com(int n, int r){
+ll C[60][60]={};
+ll com(int n, int r){
     if(C[n][r]!=0) return C[n][r];
     else if(n==r || r==0) return C[n][r]=1;
     else if(r==1 || r==n-1) return C[n][r]=n;
     else return  C[n][r] = C[n][n-r] = com(n-1,r-1) + com(n-1,r);
 }
+
+const ll mod = 1e9+7;
 
 ll add(ll a,ll b){ return (a+b)%mod;}
 
@@ -35,6 +53,8 @@ ll power(ll n, ll r){
 }
 
 ll divm(ll a,ll b){ return mul(a, power(b, mod-2));}
+
+ll f[200000] = {};
 
 ll fact(ll n){
     if(f[n]) return f[n];
@@ -126,27 +146,29 @@ void print_binary(double decimal){
 }
 
 int digits(int n){
-    int i=1;
-    while(n/=10)i++;
-    return i;
+    return to_string(n).size();
 }
 
-int main(void){
-    int N;
-    cin>>N;
-    vector<int> v(N);
-    int *a = new int[N+1];
-    /**vectorで2次元配列**/
-    vector< vector<int> > b;
-    b.resize(N+1);
-    for(i=0;i<=N;i++) b[i].resize(N+1);
-    
 
+
+#define MAX 100
+int main(void){
     int ary[2*MAX + 1];
-    // [-MAX, MAX]にアクセスできる!
-    int *dp = ary + MAX;
+    int *dp = ary + MAX; // [-MAX, MAX]
     dp[-1] = 3;
-    printf("%d\n", dp[-1]);
+    map<string, int> mp;
+    mp["hoge"] = 3;
+    mp["fuga"] = 5;
+    mp["piyo"] = 6;
+    print(mp);
+
+    set<double> st;
+    st.insert(3.14);
+    st.insert(2.71);
+    print(st);
+
+    pair<int,pair<int,int>> p = {3,{1,4}};
+    cout<<p<<endl;
 
     return 0;
 }
