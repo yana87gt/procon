@@ -1,12 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define rep(i,n) for(int i=0;i<n;++i)
-#define rep1(i,n) for(int i=1;i<=n;++i)
-#define debug(x) cout<<#x<<": "<<x<<endl
+#define rep(i,n) for(int i=0;i<int(n);++i)
+#define rep1(i,n) for(int i=1;i<=int(n);++i)
 #define all(a) (a).begin(),(a).end()
+#define each(itr,c) for(auto itr=c.begin(); itr!=c.end(); ++itr)
 #define lb(s,x) lower_bound(all(s),x)-s.begin()
 #define ub(s,x) upper_bound(all(s),x)-s.begin()
 #define uniq(a) a.erase(unique(all(a)),a.end())
+#define debug(x) cerr<<#x<<": "<<x<<endl
 
 template<class T,class U>
 ostream& operator<<(ostream& o, const pair<T,U> &p){
@@ -14,7 +15,15 @@ ostream& operator<<(ostream& o, const pair<T,U> &p){
     return o;
 }
 
-#define print(v) { cout<<#v<<": [ "; for(auto _ : v) cout<<_<<", "; cout<<"]"<<endl; }
+template<typename A, size_t N, typename T>
+void Fill(A (&array)[N], const T &val){
+    fill( (T*)array, (T*)(array+N), val );
+}
+
+#define print(v) { cerr<<#v<<": [ "; for(auto _ : v) cerr<<_<<", "; cerr<<"]"<<endl; }
+
+#define INF 1e9
+typedef long long ll;
 
 using MyClass = pair<int,int>;
 namespace std {
@@ -23,7 +32,6 @@ namespace std {
     }
 }
 
-typedef long long ll;
 
 int dx[4] = {1,0,-1,0};
 int dy[4] = {0,1,0,-1};
@@ -150,7 +158,6 @@ int digits(int n){
 }
 
 
-
 #define MAX 100
 int main(void){
     int ary[2*MAX + 1];
@@ -170,5 +177,13 @@ int main(void){
     pair<int,pair<int,int>> p = {3,{1,4}};
     cout<<p<<endl;
 
+    bitset<12> bs1(2214);
+    bitset<12> bs2(578);
+    cout<<bitset<12>(12).to_string('X','Y')<<endl;;
+
+    string l_r = "RLLLRRRLRRLL";
+    debug(bs1);
+    debug(bs2);
+    debug(l_r);
     return 0;
 }

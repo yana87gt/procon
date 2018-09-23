@@ -1,32 +1,33 @@
 <snippet>
     <content><![CDATA[
-typedef long long ll;
-#define MAX_V 200010
-#define INF 1e18
-struct edge{ll cost; int to;};
-typedef pair<ll,int> P;//dp[v],v
-vector<edge> G[MAX_V]; 
-ll dp[MAX_V];
+using Cost = int;
+struct Edge{
+    Cost cost;
+    int to;
+    bool operator>(const Edge &right)const{
+        return cost > right.cost;
+    }
+};
 
-void dijkstra(int start){
-    fill(dp,dp+MAX_V,INF);
-    priority_queue<P,vector<P>,greater<P>> qu;
-    qu.push({dp[start]=0,start});
+void dijkstra(vector<vector<Edge>> &g, Edge start){
+    vector<Cost> dp(g.size(), (Cost)INF);
+    priority_queue<Edge,vector<Edge>,greater<Edge>> qu;
+    dp[start.to] = start.cost;
+    qu.push(start);
     while(qu.size()){
-        P pr=qu.top(); qu.pop();
-        int v=pr.second;
-        //if(v==N-1)return;
-        if(dp[v] < pr.first)continue;
-        for(edge e:G[v]){
-            if( dp[e.to] > dp[v]+e.cost){
-                dp[e.to] = dp[v]+e.cost;
-                qu.push({dp[e.to],e.to});
+        Edge cur = qu.top(); qu.pop();
+        int v = cur.to;
+        if(dp[v] < cur.cost) continue;
+        for(Edge e : g[v]){
+            if( dp[e.to] > cur.cost + e.cost){
+                dp[e.to] = cur.cost + e.cost;
+                qu.push({dp[e.to], e.to});
             }
         }
     }
 }
 
 ]]></content>
-    <tabTrigger>dijkstra</tabTrigger>
+    <tabTrigger>lib-dijkstra</tabTrigger>
     <scope>source.c++</scope>
 </snippet>

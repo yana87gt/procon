@@ -34,6 +34,6 @@ int ccw(Point a, Point b, Point c) {
 }
 
 ]]></content>
-    <tabTrigger>lib_Point</tabTrigger>
+    <tabTrigger>lib-Point</tabTrigger>
     <scope>source.c++</scope>
 </snippet>

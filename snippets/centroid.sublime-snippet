@@ -68,6 +68,6 @@ void solve(){
 }
 
 ]]></content>
-    <tabTrigger>vector</tabTrigger>
+    <tabTrigger>lib-centroid</tabTrigger>
     <scope>source.c++</scope>
 </snippet>

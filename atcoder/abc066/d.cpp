@@ -1,32 +1,56 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define rep(i,n) for(int i=0;i<int(n);++i)
-typedef long long ll;
-const ll mod = 1000000007;
 
-ll f[100010];
+class modint {
+  public:
+    using ll = long long;
+    ll num;
+    static const ll MOD = 1e9+7;
+    static vector<modint> factorial;
 
-ll mul(ll a,ll b){ return (a*b)%mod;}
+    modint(): num(0) {};
+    modint(ll _n): num((_n + MOD) % MOD) {}
+    modint(const modint &r): num(r.num) {}
+    operator ll() const { return (num+MOD)%MOD; }
+    friend istream& operator>>(istream& is, modint &r){
+        ll num_;
+        is >> num_;
+        r = num_;
+        return is;
+    }
+    modint operator+(const modint &r) const { return modint(num + r.num); }
+    modint operator-(const modint &r) const { return modint(num - r.num); }
+    modint operator*(const modint &r) const { return modint(num * r.num); }
 
-ll power(ll n, ll r){
-    if(r==1) return n;
-    return mul(power(mul(n,n),r/2),(r&1 ? n : 1));
-}
+    template<typename T>
+    modint operator^(const T &r) const {
+        if(r == 0) return 1;
+        return (((*this)*(*this)) ^ (r/2)) * modint(r&1 ? num : 1);
+    }
+    modint operator/(const modint &r) const { return num * (r^(MOD-2)); }
 
-ll divm(ll a,ll b){
-    return mul(a, power(b, mod-2));
-}
+    modint operator+=(const modint &r) { return *this = *this + r; }
+    modint operator-=(const modint &r) { return *this = *this - r; }
+    modint operator*=(const modint &r) { return *this = *this * r; }
+    modint operator/=(const modint &r) { return *this = *this / r; }
 
-ll fact(ll n){
-    if(f[n]) return f[n];
-    if(n==0) return 1;
-    return f[n] = mul(n,fact(n-1));
-}
+    template<typename T>
+    modint operator^=(const T &r) { return *this = *this ^ r; }
 
-ll com(ll n,ll r){
-    if(n<r) return 0;
-    return divm(fact(n),mul(fact(n-r),fact(r)));
-}
+    static modint fact(int n){
+        if((int)factorial.size() <= n) factorial.resize(n+1);
+        if(factorial[n]) return factorial[n];
+        if(n == 0) return 1;
+        return factorial[n] = modint(n) * fact(n-1);
+    }
+
+    static modint com(ll n,ll r){
+        return n >= r ? fact(n)/(fact(n-r)*fact(r)) : modint(0);
+    }
+};
+vector<modint> modint::factorial;
+
 
 int main(void){
     int n,l=0,r=0;
@@ -41,8 +65,8 @@ int main(void){
         pos[a[i]] = i;
     }
     
-    for(int k = 1; k<=n+1; k++){
-        cout<<(com(n+1,k)+mod-com(l+n-r,k-1))%mod<<endl;
+    for(int k = 1; k <= n+1; k++){
+        cout<<modint::com(n+1,k) - modint::com(l+n-r,k-1)<<endl;
     }
     return 0;
 }

@@ -1,6 +1,0 @@
-Sublime Text
-
-Shift + Alt + P 印刷
-Ctrl + S 保存
-Ctrl + B コンパイル
-Ctrl + C 保存

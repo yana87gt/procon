@@ -2,6 +2,6 @@
     <content><![CDATA[
 cout<<((${1:}) ? "${2:Yes}" : "${3:No}")<<endl;
 ]]></content>
-    <tabTrigger>yes_no</tabTrigger>
+    <tabTrigger>yes-no</tabTrigger>
     <scope>source.c++</scope>
 </snippet>

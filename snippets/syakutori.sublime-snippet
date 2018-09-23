@@ -1,0 +1,29 @@
+<snippet>
+    <content><![CDATA[
+// 区間の長さは0以上であるとする    
+int l = 0;
+rep(r,n){
+    /* 区間にa[r]を追加 */
+    while(l <= r && !(/* 区間[l,r+1)が成立 */)){
+        /* 区間からa[l]を除去 */
+        l++;
+    }
+    /* 区間[l,r+1)に対する処理 */
+}
+
+
+// 区間の長さは1以上であるとする    
+int l = 0;
+rep(r,n){
+    /* 区間にa[r]を追加 */
+    while(l < r && !(/* 区間[l,r]が成立 */)){
+        /* 区間からa[l]を除去 */
+        l++;
+    }
+    /* 区間[l,r]に対する処理 */
+}
+
+]]></content>
+    <tabTrigger>lib-syakutori</tabTrigger>
+    <scope>source.c++</scope>
+</snippet>

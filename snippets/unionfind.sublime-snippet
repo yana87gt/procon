@@ -24,6 +24,6 @@ struct UnionFind{
     int size(int x){ return sizes[find(x)]; }
 };
 ]]></content>
-    <tabTrigger>unionfind</tabTrigger>
+    <tabTrigger>lib-unionfind</tabTrigger>
     <scope>source.c++</scope>
 </snippet>

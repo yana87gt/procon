@@ -14,6 +14,6 @@ void init(){
 
 
 ]]></content>
-    <tabTrigger>eratosthenes</tabTrigger>
+    <tabTrigger>lib-eratosthenes</tabTrigger>
     <scope>source.c++</scope>
 </snippet>

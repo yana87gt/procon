@@ -1,0 +1,8 @@
+<snippet>
+    <content><![CDATA[
+int lcm(int a,int b){return a/gcd(a,b)*b;}
+
+]]></content>
+    <tabTrigger>lib-lcm</tabTrigger>
+    <scope>source.c++</scope>
+</snippet>
