@@ -22,3 +22,4 @@ codeforces/730/c.cpp
 aoj/1613.cpp
 aoj/1182.cpp
 atcoder/bitflyer2018-final-open/b.cpp
+atcoder/code-festival-2018-quala/c.cpp
