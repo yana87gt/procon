@@ -1,6 +1,6 @@
 <snippet>
     <content><![CDATA[
-cout<<((${1:}) ? "${2:Yes}" : "${3:No}")<<endl;
+cout << ((${1:}) ? "${2:Yes}" : "${3:No}") << endl;
 ]]></content>
     <tabTrigger>yes-no</tabTrigger>
     <scope>source.c++</scope>

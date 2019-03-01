@@ -43,11 +43,14 @@ class modint {
         return factorial[n] = modint(n) * fact(n-1);
     }
 
-    static modint com(ll n,ll r){
+    static modint C(ll n,ll r){
         return n >= r ? fact(n)/(fact(n-r)*fact(r)) : modint(0);
     }
 };
 vector<modint> modint::factorial;
+#define fact(n) modint::fact(n)
+#define C(n,r) modint::C(n,r)
+#define H(a,b) C(a+b, a)
 
 ]]></content>
     <tabTrigger>lib-modint</tabTrigger>

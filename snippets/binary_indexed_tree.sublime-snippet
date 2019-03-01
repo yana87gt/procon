@@ -1,35 +1,34 @@
 <snippet>
     <content><![CDATA[
-template<Tname T>
+template<typename T>
 class BIT {
-    public: //1-index
-    vector<T> bit;
+    public:
     int n;
-    BIT(int size){
-        n = size+1;
-        bit = vector<T>(n+1,0);
-    }
+    vector<T> dat; // i: [1,n]
 
-    void add(int i,T x){
-        while(i<=n){
-            bit[i] += x;
-            i += i&-i;
+    BIT(int size): n(size+1), dat(vector<T>(n+1)) {}
+
+    void add(int i, T x) {
+        while (i <= n) {
+            dat[i] += x;
+            i += i & -i;
         }
     }
 
-    T sum(int i){
-        int ret=0;
-        while(i>0){
-            ret += bit[i];
-            i -= i&-i;
+    T sum(int i) {
+        T ret = 0;
+        while (i > 0) {
+            ret += dat[i];
+            i -= i & -i;
         }
         return ret;
     }
 
-    T range(int l,int r){
-        return sum(r)-sum(l-1);
+    T range(int l, int r) {
+        return sum(r) - sum(l-1);
     }
 };
+
 
 ]]></content>
     <tabTrigger>lib-BIT</tabTrigger>
