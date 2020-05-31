@@ -25,6 +25,9 @@ Tasks:
     全方位木(Rerooting)DPの数え上げ
   ☐ GCJ QualificationRound2020
     N*Nの制約にそった行列を構築する
+  ☐ GCJ Round1A2020 - C
+    Dancing Links
+    https://japlj.hatenadiary.org/entry/20090902/1251901464
   ☐ GCJ Round1A2020 - A
     全ての正規表現にマッチする文字列Sを構成する問題
     実はギャグ問題で、両端のチェックが通ればあとは全て *XXXX* の形に見なせる
@@ -41,6 +44,11 @@ Tasks:
   ☐ GCJ Round1C2020 - C
     ケーキを同じサイズでDこ提供する問題
     それぞれD倍して、全ての約数を出してそれぞれの約数で試したけどWA
+    ☐ 素因数分解ライブラリを整備したい
+      - https://qiita.com/zu_rin/items/25521b5870389e0f85bf
+        Miller–Rabin(ミラーラビン)素数判定法について理解したい
+      - https://qiita.com/srtk86/items/609737d50c9ef5f5dc59
+        素数判定いろいろ - フェルマーテスト・ミラーラビン素数判定法
   ☐ https://atcoder.jp/contests/abc168/tasks/abc168_f
     うしさんの座圧ライブラリを使ってACしたが、ライブラリを自分用に改変したい
     build済みかどうかで制限するなど
