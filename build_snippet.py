@@ -34,7 +34,12 @@ def sublime_to_library():
 {code}""")
 
 '''
-
+Code
+-> Preferences
+-> User Snippets
+-> New Snippets file for 'procon' ...
+-> "procon"(.code-snippets) で一旦ファイルを生成(これをしないと認識されない？？)
+-> このスクリプトを走らせる
 '''
 
 # library -> .vscode(snippet)

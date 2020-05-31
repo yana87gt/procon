@@ -1,0 +1,3 @@
+{
+    "shell_cmd": "g++ -O2 -std=c++14 -Wall -Wextra -Wshadow $file_name"
+}
