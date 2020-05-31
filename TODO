@@ -17,6 +17,36 @@ Tools:
     http://verifiedby.me/adiary/0115
 
 Tasks:
+  ☐ https://atcoder.jp/contests/abc159/tasks/abc159_e
+    2次元imos法の問題？
+  ☐ https://atcoder.jp/contests/abc159/tasks/abc159_f
+    maspyさんの数え上げと多項式・形式的冪級数の対応
+  ☐ https://atcoder.jp/contests/abc160/tasks/abc160_f
+    全方位木(Rerooting)DPの数え上げ
+  ☐ GCJ QualificationRound2020
+    N*Nの制約にそった行列を構築する
+  ☐ GCJ Round1A2020 - A
+    全ての正規表現にマッチする文字列Sを構成する問題
+    実はギャグ問題で、両端のチェックが通ればあとは全て *XXXX* の形に見なせる
+  ☐ GCJ Round1A2020 - B
+    パスカルの三角形を歩いた道の和でNを構成する
+    完全に横切る行をいくつか選ぶと良いらしい
+  ☐ GCJ Round1B2020 - C
+    １手ごとに同じ値がくっつく場所が２箇所ずつ生じるのが最適ムーブ。
+    それを達成する自然な手を打ち続けるとなんと綺麗に順番まで揃う。
+    最後の一手だけは例外なこともある。
+    （12[3451]2345→34[511223]45→5[11223344]5）
+    実装はシミュレーション的にやった。
+    By snuke
+  ☐ GCJ Round1C2020 - C
+    ケーキを同じサイズでDこ提供する問題
+    それぞれD倍して、全ての約数を出してそれぞれの約数で試したけどWA
+  ☐ https://atcoder.jp/contests/abc168/tasks/abc168_f
+    うしさんの座圧ライブラリを使ってACしたが、ライブラリを自分用に改変したい
+    build済みかどうかで制限するなど
+  ☐ https://atcoder.jp/contests/nomura2020/tasks/nomura2020_d
+    なもりグラフ(サークル含む)と根付き木と孤立に分ける
+    連結成分の数を決め打ちして数え上げる方針で進めていた
   ☐ https://vjudge.net/contest/309481#problem/H
     N=800 幾何
   ☐ https://atcoder.jp/contests/agc037/tasks/agc037_c
