@@ -1,0 +1,99 @@
+VSCode移行:
+  ✔ GoogleドキュメントのほうのTODOをここに移植
+  ☐ 一旦commit
+    ☐ 入力ファイルなどを抜く
+  ☐ easy commit script
+  ☐ snippet
+    https://qiita.com/xx2xyyy/items/fd333368db548167f15a
+    https://qiita.com/AokabiC/items/af685bfd205dda44ec45
+    ☐ ライブラリ移植スクリプト
+
+Tools:
+  ☐ atcoder-tools
+    https://github.com/kyuridenamida/atcoder-tools
+  ☐ 図形描画
+    http://verifiedby.me/adiary/0115
+
+Tasks:
+  ☐ https://vjudge.net/contest/309481#problem/H
+    N=800 幾何
+  ☐ https://atcoder.jp/contests/agc037/tasks/agc037_c
+    数列円A,BがあってA[i] += A[i-1] + A[i+1]にする操作をして最小回数でBにする
+  ☐ https://atcoder.jp/contests/abc138/tasks/abc138_f
+    整数の組 (x,y)(L≤x≤y≤R)であって、y を x で割った余りが y XOR x に等しいものの個数
+  ☐ modint整備
+    * N≤10^7 -> https://atcoder.jp/contests/agc040/tasks/agc040_c
+    * うしライブラリ -> https://github.com/ei1333/library
+  ☐ https://atcoder.jp/contests/abc150/tasks/abc150_e
+  ☐ ローリングハッシュ
+    * 自分の提出 https://atcoder.jp/contests/abc150/submissions/9408833
+    * 貼った元 http://algoogle.hadrori.jp/algorithm/rolling-hash.html
+    * 他人の提出 https://atcoder.jp/contests/abc150/submissions/9396009
+    * Luzhiled's memo https://ei1333.github.io/luzhiled/snippets/string/rolling-hash.html
+    ☐ 公式解法：KMP法 https://img.atcoder.jp/abc150/editorial.pdf
+  ☐ https://atcoder.jp/contests/dwacon6th-prelims/tasks/dwacon6th_prelims_d
+    ハミルトンパスを確保しながら貪欲
+  ☐ grid bfsのライブラリ化
+    https://atcoder.jp/contests/abc151/submissions/9455833
+  ☐ https://atcoder.jp/contests/nikkei2019-2-qual/tasks/nikkei2019_2_qual_c
+  ☐ https://atcoder.jp/contests/keyence2020/tasks/keyence2020_d
+  ☐ https://atcoder.jp/contests/abc133/tasks/abc133_f
+    mapか何かで持って頑張れるやつ
+  ☐ https://atcoder.jp/contests/abc132/tasks/abc132_f
+  ☐ https://atcoder.jp/contests/abc130/tasks/abc130_f
+    三分探索という嘘解法を通してしまった
+  ☐ https://atcoder.jp/contests/abc130/tasks/abc130_e
+  ☐ https://atcoder.jp/contests/diverta2019-2/tasks/diverta2019_2_d
+  ☐ https://atcoder.jp/contests/diverta2019/tasks/diverta2019_e
+  ☐ 行列変換
+    ☐ https://atcoder.jp/contests/abc129/tasks/abc129_f
+    ☐ http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2441
+  ☐ https://atcoder.jp/contests/agc034/tasks/agc034_c
+  ☐ https://atcoder.jp/contests/abc128/tasks/abc128_f
+  ☐ https://atcoder.jp/contests/abc003/tasks/abc003_4
+  ☐ gcj/2019/Round1B2019
+    ☐ https://codingcompetitions.withgoogle.com/codejam/round/0000000000051706/0000000000122838
+  ☐ 二分探索のライブラリ化
+    https://atcoder.jp/contests/abc125/submissions/5168482
+  ☐ https://atcoder.jp/contests/agc032/tasks/agc032_c
+  ☐ https://atcoder.jp/contests/agc032/tasks/agc032_a
+  ☐ https://atcoder.jp/contests/agc031/tasks/agc031_c
+  ☐ https://atcoder.jp/contests/abc122/tasks/abc122_d
+  ☐ http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2521
+  ☐ 平行二分探索
+    https://beta.atcoder.jp/contests/code-thanks-festival-2017-open/tasks/code_thanks_festival_2017_h
+  ☐ 先祖が互いに素な木
+    http://codeforces.com/gym/101630/my#
+    解説 http://neerc.ifmo.ru/archive/2017/neerc-2017-analysis.pdf
+  ☐ https://img.atcoder.jp/colopl2018-qual/editorial.pdf
+  ☐ https://beta.atcoder.jp/contests/arc086/tasks/arc086_b
+  ☐ ICPC2017tsukuba
+    I問題ブログ https://kimiyuki.net/blog/2017/12/19/icpc-2017-asia-i/
+    ジャッジ http://judge.u-aizu.ac.jp/onlinejudge/contest_problem.jsp?id=ICPCOOC2017
+  ☐ https://beta.atcoder.jp/contests/dwacon5th-prelims/submissions/3654185
+  ☐ https://atcoder.jp/contests/dwacon5th-prelims/tasks/dwacon5th_prelims_d
+    参考: https://beta.atcoder.jp/contests/dwacon5th-prelims/submissions/3684108
+  ☐ Hanoi ICPC 幾何（三角形）
+    https://hanoi18.kattis.com/problems/kingdomofkittens
+  ☐ https://atcoder.jp/contests/agc031/tasks/agc031_c
+  ☐ https://atcoder.jp/contests/agc032/tasks/agc032_a
+  ☐ https://atcoder.jp/contests/abc122/tasks/abc122_d
+  ☐ セグ木
+    ☐ http://ei1333.hateblo.jp/entry/2017/12/14/000000
+    ☐ http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1068&lang=jp
+    ☐ https://yukicoder.me/problems/no/619
+    ☐ https://yahoo-procon2017-qual.contest.atcoder.jp/tasks/yahoo_procon2017_qual_d
+  ☐ https://atcoder.jp/contests/ddcc2017-final/tasks/ddcc2017_final_c
+    参考: https://atcoder.jp/contests/ddcc2017-final/submissions/1736297
+  ☐ https://img.atcoder.jp/code-festival-2017-qualb/editorial.pdf
+  ☐ https://beta.atcoder.jp/contests/cf17-final-open/tasks/cf17_final_d
+    tossy: https://beta.atcoder.jp/contests/cf17-final-open/submissions/1804140
+  ☐ https://beta.atcoder.jp/contests/cf17-final-open/tasks/cf17_final_e
+  ☐ BDD
+    http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2518
+  ☐ http://2016.nwerc.eu/ の幾何
+  ☐ RUPC復習、G問題
+
+Read:
+  ☐ http://www.qmss.jp/qmss/glossary/math-glossary-je.htm
+  ☐ 蟻本

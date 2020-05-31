@@ -8,7 +8,7 @@ class modint {
     static vector<modint> factorial;
 
     modint(): num(0) {};
-    modint(ll _n): num((_n + MOD) % MOD) {}
+    modint(ll n_): num((n_ + MOD) % MOD) {}
     modint(const modint &r): num(r.num) {}
     operator ll() const { return (num+MOD)%MOD; }
     friend istream& operator>>(istream& is, modint &r){
@@ -36,18 +36,26 @@ class modint {
     template<typename T>
     modint operator^=(const T &r) { return *this = *this ^ r; }
 
+    static modint pow(const modint x, ll r) {
+        return x^r;
+    }
+
     static modint fact(int n){
-        if((int)factorial.size() <= n) factorial.resize(n+1);
-        if(factorial[n]) return factorial[n];
-        if(n == 0) return 1;
-        return factorial[n] = modint(n) * fact(n-1);
+        if((int)factorial.size() <= n) {
+            int size = factorial.size();
+            factorial.resize(n+1);
+            for (int i = size; i <= n; i++) {
+                factorial[i] = fact(i-1) * modint(i);
+            }
+        }
+        return factorial[n];
     }
 
     static modint C(ll n,ll r){
         return n >= r ? fact(n)/(fact(n-r)*fact(r)) : modint(0);
     }
 };
-vector<modint> modint::factorial;
+vector<modint> modint::factorial = {1};
 #define fact(n) modint::fact(n)
 #define C(n,r) modint::C(n,r)
 #define H(a,b) C(a+b, a)

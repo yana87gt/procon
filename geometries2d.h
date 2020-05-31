@@ -262,7 +262,7 @@ Point minEnclosingCircle(const VP& ps) {
     Point c;
     double move = 0.5;
     rep(i,39) {  // 2^(-39-1) \approx 0.9e-12
-        rep(t,50) {
+        rep(t,100) {
             double max = 0;
             int k = 0;
             rep (j, ps.size()) if (max < norm(ps[j]-c)) {

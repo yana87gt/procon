@@ -1,2 +1,8 @@
 a.out
 private/
+*.in
+*.out
+*.ans
+in.txt
+out.txt
+.DS_Store
