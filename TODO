@@ -8,7 +8,12 @@ VSCode移行:
     https://qiita.com/AokabiC/items/af685bfd205dda44ec45
     ✔ ライブラリ移植スクリプト @done(20-06-01 08:02)
   ☐ コンパイルをショートカットでできるようにする
+    https://qiita.com/EngTks/items/ffa2a7b4d264e7a052c6
   ☐ sublime用の `snippets` や `sublime-config` を消す
+  ☐ build_snippet.py
+    ☐ マッチしなかったときのエラーハンドリング
+    ☐ libraryを書くときようのヘッダーのためのsnippet
+    
 
 Tools:
   ☐ atcoder-tools
