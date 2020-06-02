@@ -1,4 +1,4 @@
-VSCode移行:
+VSCode:
   ✔ GoogleドキュメントのほうのTODOをここに移植
   ✔ 一旦commit @done(20-06-01 08:01)
     ✔ 入力ファイルなどを抜く @done(20-06-01 08:01)
@@ -7,17 +7,27 @@ VSCode移行:
     https://qiita.com/xx2xyyy/items/fd333368db548167f15a
     https://qiita.com/AokabiC/items/af685bfd205dda44ec45
     ✔ ライブラリ移植スクリプト @done(20-06-01 08:02)
-  ☐ コンパイルをショートカットでできるようにする
+  ✔ コンパイルをショートカットでできるようにする @done(20-06-02 08:33)
+    Code Runner
     https://qiita.com/EngTks/items/ffa2a7b4d264e7a052c6
+    今まで使っていた `Command + B` はサイドバーのショートカットキーなので
+    `Ctrl + C` で設定
   ☐ sublime用の `snippets` や `sublime-config` を消す
   ☐ build_snippet.py
     ☐ マッチしなかったときのエラーハンドリング
     ☐ libraryを書くときようのヘッダーのためのsnippet
-    
+    ☐ library/*.cpp にincludeとnamespaceを書いて、コンパイルが通るようにする
+    ☐ それにマッチできるようにする
+  ☐ それぞれのコンテストサイトごとにC++コンパイラのバージョンを設定する(必要か要検討)
+  ☐ デバッガ
+    https://qiita.com/2019Shun/items/5ab290a4117a00e373b6
 
 Tools:
   ☐ atcoder-tools
     https://github.com/kyuridenamida/atcoder-tools
+    ☐ Code Runner でコンパイルと同時にサンプルのチェックもする
+      code-runner.CustomCommand
+      task.jsonもあり
   ☐ 図形描画
     http://verifiedby.me/adiary/0115
 
