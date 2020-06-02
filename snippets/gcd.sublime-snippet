@@ -1,8 +1,0 @@
-<snippet>
-    <content><![CDATA[
-int gcd(int a,int b){return b==0 ? a : gcd(b,a%b);}
-
-]]></content>
-    <tabTrigger>lib-gcd</tabTrigger>
-    <scope>source.c++</scope>
-</snippet>

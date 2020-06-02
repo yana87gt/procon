@@ -12,12 +12,16 @@ VSCode:
     https://qiita.com/EngTks/items/ffa2a7b4d264e7a052c6
     今まで使っていた `Command + B` はサイドバーのショートカットキーなので
     `Ctrl + C` で設定
-  ☐ sublime用の `snippets` や `sublime-config` を消す
-  ☐ build_snippet.py
-    ☐ マッチしなかったときのエラーハンドリング
+  ✔ sublime用の `snippets` や `sublime-config` を消す @done(20-06-02 09:35)
+  ☐ library
+    ☐ マクロのみのsnippet
+    ☐ library.cpp の移植
+    ☐ geometries2d.hpp の移植
+    ☐ build_snippet.pyでマッチしなかったときのエラーハンドリング
     ☐ libraryを書くときようのヘッダーのためのsnippet
     ☐ library/*.cpp にincludeとnamespaceを書いて、コンパイルが通るようにする
-    ☐ それにマッチできるようにする
+    ☐ マクロを使わない
+    ☐ それにbuild_snippet.pyがマッチできるようにする
   ☐ それぞれのコンテストサイトごとにC++コンパイラのバージョンを設定する(必要か要検討)
   ☐ デバッガ
     https://qiita.com/2019Shun/items/5ab290a4117a00e373b6
