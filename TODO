@@ -36,6 +36,10 @@ Tools:
     http://verifiedby.me/adiary/0115
 
 Tasks:
+  ☐ https://atcoder.jp/contests/abc169/tasks/abc169_e
+    Count Median
+  ☐ https://atcoder.jp/contests/past202005/tasks/past202005_n
+    * 数列があって、隣接する[i,i+1]をswap or [l,r]をsort の2種クエリを受けた最後の数列を答える
   ☐ https://atcoder.jp/contests/abc159/tasks/abc159_e
     2次元imos法の問題？
   ☐ https://atcoder.jp/contests/abc159/tasks/abc159_f

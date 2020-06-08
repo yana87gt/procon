@@ -3,5 +3,6 @@
     "code-runner.clearPreviousOutput": true,
     "code-runner.executorMap": {
         "cpp": "cd $dir && g++ -O2 -std=gnu++14 -Wall -Wextra -Wshadow $fileName"
-    }
+    },
+    "code-runner.runInTerminal": true
 }
