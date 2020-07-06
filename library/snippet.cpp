@@ -33,6 +33,6 @@ template<class H,class... T> void recursive_debug(string s, H h, T... t) {
 
 
 int main(void) {
-
+    
     return 0;
 }
