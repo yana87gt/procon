@@ -5,30 +5,21 @@ using namespace std;
 #define all(a) (a).begin(),(a).end()
 typedef int ll;
 
-#define debug(...) recursive_debug(#__VA_ARGS__, __VA_ARGS__)
+template<class T,class U> ostream& operator<<(ostream& ost, const pair<T,U> &p) { ost << "(" << p.first << ", " << p.second << ")"; return ost; }
+#define ostream_container { ost << "{"; for(const auto &t : v) { if (&t != &*v.begin()) ost << ", "; ost << t; } ost << "}"; return ost; }
+template<class T> ostream& operator<<(ostream &ost, const vector<T> &v) ostream_container
+template<class T> ostream& operator<<(ostream &ost, const set<T> &v) ostream_container
+template<class T,class U> ostream& operator<<(ostream &ost, const map<T,U> &v) ostream_container
 
-void recursive_debug(string) { cerr << endl; }
-
-template<class H,class... T>
-void recursive_debug(string s, H h, T... t) {
+template<class H> void recursive_debug(string s, H h) {
+    cerr << "\033[33m" << s << " = " << h << endl << "\033[m";
+}
+template<class H,class... T> void recursive_debug(string s, H h, T... t) {
     int comma = s.find(',');
-    cerr << s.substr(0,comma) << " = " << h << ", ";
+    cerr << "\033[33m" << s.substr(0,comma) << " = " << h << ", ";
     recursive_debug(s.substr(comma+1), t...);
 }
-
-template<class T,class U>
-ostream& operator<<(ostream& ost, const pair<T,U> &p) {
-    ost << "(" << p.first << ", " << p.second << ")";
-    return ost;
-}
-
-template<class T>
-ostream& operator<<(ostream &ost, const vector<T> &v) {
-    ost << "[";
-    for(T t : v) ost << t << ",";
-    ost << "]";
-    return ost;
-}
+#define debug(...) recursive_debug(#__VA_ARGS__, __VA_ARGS__)
 
 struct State {
     ll score;

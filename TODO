@@ -13,8 +13,17 @@ VSCode:
     今まで使っていた `Command + B` はサイドバーのショートカットキーなので
     `Ctrl + C` で設定
   ✔ sublime用の `snippets` や `sublime-config` を消す @done(20-06-02 09:35)
+  ☐ 不要な部分をカットするスクリプト
+    ☐ #define マクロはコード中になければ削除
+    ☐ #define ll long long に変えて良くない??
+    ☐ debug 系はコード中からも定義自体も削除
   ☐ Dynamic snippet evaluation in VSCode
     https://stackoverflow.com/questions/39413783/dynamic-snippet-evaluation-in-vscode
+    https://code.visualstudio.com/api/references/vscode-api#CompletionItemProvider
+    https://github.com/microsoft/vscode-extension-samples
+    https://vshaxe.github.io/vscode-extern/vscode/CompletionItemProvider.html
+    https://code.visualstudio.com/api/get-started/your-first-extension
+
   ☐ library
     ☐ マクロのみのsnippet
     ☐ library.cpp の移植

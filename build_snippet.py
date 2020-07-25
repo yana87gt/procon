@@ -47,6 +47,8 @@ def library_to_snippet():
     libraries = os.listdir("./library")
     snippet_json = dict()
     for library in libraries:
+        if ".cpp" not in library and ".hpp" not in library:
+            continue
         with open(os.path.join('library', library), 'r') as input_file:
             text = input_file.read()
         match_obj = re.match(r'''///
