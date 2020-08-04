@@ -185,6 +185,15 @@
             ""
         ]
     },
+    "operator": {
+        "prefix": "operator",
+        "scope": "cpp",
+        "body": [
+            "bool operator<(const ${1:State} &rhs) const {",
+            "    return ${2:cost} < rhs.${2:cost};",
+            "}"
+        ]
+    },
     "longest_common_subsequence": {
         "prefix": "lib-lcs",
         "scope": "cpp",
@@ -246,7 +255,8 @@
         "prefix": "lib-comp",
         "scope": "cpp",
         "body": [
-            "bool comp(Point a,Point b) {return (a.x==b.x ? a.y<b.y : a.x<b.x);}"
+            "bool comp(${1:Point} &lhs, ${1:Point} &rhs) { return ${2:(lhs.x != rhs.x ? lhs.x < rhs.x : lhs.y < rhs.y)}; }",
+            ""
         ]
     },
     "second": {

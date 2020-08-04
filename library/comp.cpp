@@ -3,4 +3,4 @@
 /// prefix: lib-comp
 ///
 
-bool comp(Point a,Point b) {return (a.x==b.x ? a.y<b.y : a.x<b.x);}
+bool comp(${1:Point} &lhs, ${1:Point} &rhs) { return ${2:(lhs.x != rhs.x ? lhs.x < rhs.x : lhs.y < rhs.y)}; }
