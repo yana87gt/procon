@@ -417,6 +417,14 @@ int main(void) {
 }
 
 /*
+焼きなまし法の参考:
+    - https://gasin.hatenadiary.jp/entry/2019/09/03/162613
+    - https://shindannin.hatenadiary.com/entry/2021/03/06/115415
+解説:
+    - https://simanman.hatenablog.com/entry/2023/06/11/232949
+    - https://atcoder.jp/contests/ahc020/editorial/6578
+    - https://atcoder.jp/contests/ahc020/editorial/6576
+
 
 seed1で156万点くらい
 visualizerを見るとまだまだ無駄な放送局がある
