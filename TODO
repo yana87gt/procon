@@ -47,6 +47,16 @@ Tools:
     http://verifiedby.me/adiary/0115
 
 Tasks:
+  ☐ AHC001の高得点解法を学ぶ
+    http://hakomof.hatenablog.com/entry/2021/03/14/202411
+  ☐ https://hcpc-hokudai.github.io/archive/dynamic_programming_probability_dp.pdf
+    確率DPを極めよう
+  ☐ https://atcoder.jp/contests/agc047/tasks/agc047_e
+    比較と加算のみで乗算をシュミレートする
+  ☐ https://atcoder.jp/contests/agc047/tasks/agc047_b
+    ☐ 複数のローリングハッシュをライブラリ化
+    ☐ この問題のようなk番目までのハッシュも扱える形
+    ☐ 一般的な [l,r) ？も取れるように
   ☐ https://atcoder.jp/contests/nomura2020/tasks/nomura2020_d
     サイクルとかなもりとか孤立とか考える
   ☐ https://atcoder.jp/contests/abc169/tasks/abc169_f
@@ -156,24 +166,11 @@ Tasks:
     I問題ブログ https://kimiyuki.net/blog/2017/12/19/icpc-2017-asia-i/
     ジャッジ http://judge.u-aizu.ac.jp/onlinejudge/contest_problem.jsp?id=ICPCOOC2017
   ☐ https://beta.atcoder.jp/contests/dwacon5th-prelims/submissions/3654185
-  ☐ https://atcoder.jp/contests/dwacon5th-prelims/tasks/dwacon5th_prelims_d
-    参考: https://beta.atcoder.jp/contests/dwacon5th-prelims/submissions/3684108
-  ☐ Hanoi ICPC 幾何（三角形）
-    https://hanoi18.kattis.com/problems/kingdomofkittens
-  ☐ https://atcoder.jp/contests/agc031/tasks/agc031_c
-  ☐ https://atcoder.jp/contests/agc032/tasks/agc032_a
-  ☐ https://atcoder.jp/contests/abc122/tasks/abc122_d
   ☐ セグ木
     ☐ http://ei1333.hateblo.jp/entry/2017/12/14/000000
     ☐ http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1068&lang=jp
     ☐ https://yukicoder.me/problems/no/619
     ☐ https://yahoo-procon2017-qual.contest.atcoder.jp/tasks/yahoo_procon2017_qual_d
-  ☐ https://atcoder.jp/contests/ddcc2017-final/tasks/ddcc2017_final_c
-    参考: https://atcoder.jp/contests/ddcc2017-final/submissions/1736297
-  ☐ https://img.atcoder.jp/code-festival-2017-qualb/editorial.pdf
-  ☐ https://beta.atcoder.jp/contests/cf17-final-open/tasks/cf17_final_d
-    tossy: https://beta.atcoder.jp/contests/cf17-final-open/submissions/1804140
-  ☐ https://beta.atcoder.jp/contests/cf17-final-open/tasks/cf17_final_e
   ☐ BDD
     http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2518
   ☐ http://2016.nwerc.eu/ の幾何
