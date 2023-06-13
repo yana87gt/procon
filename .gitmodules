@@ -7,3 +7,6 @@
 [submodule "ghc/google-hashcode-2021-pre"]
 	path = ghc/google-hashcode-2021-pre
 	url = git@github.com:iwashi31/google-hashcode-2021-pre.git
+[submodule "icfpc/icfpc2021"]
+	path = icfpc/icfpc2021
+	url = git@github.com:minus3theta/icfpc2021.git
