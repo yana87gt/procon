@@ -4,8 +4,8 @@
 ///
 
 int T;
-cin>>T;
-rep(_,T){
-    printf("Case #%d: ",_+1);
+cin >> T;
+rep(testcase, T){
+    cout << "Case #" << testcase + 1 << ": ";
     ${1:}
 }

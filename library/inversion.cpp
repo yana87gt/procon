@@ -36,7 +36,7 @@ using ll = long long;
 
 // i < j, (v[i] op v[j]) を満たす(i,j)の組を数える
 template<typename T>
-ll inversion(vector<T> v, string op) {
+ll inversion(vector<T> v, string op = ">") {
     assert(op == "<=" || op == ">=" || op == ">" || op == "<");
     if (op == ">=" || op == "<") {
         reverse(v.begin(), v.end());
