@@ -1,10 +1,12 @@
 {
-    "code-runner.saveFileBeforeRun": true,
-    "code-runner.clearPreviousOutput": true,
-    "code-runner.runInTerminal": true,
-    "code-runner.executorMap": {
-        "cpp": "cd $dir && g++ -O2 -std=gnu++14 -Wall -Wextra -Wshadow $fileName"
-    },
+    // tasks.json によるビルド(Command + Shift + B)に移行
+    // "code-runner.saveFileBeforeRun": true,
+    // "code-runner.clearPreviousOutput": true,
+    // "code-runner.runInTerminal": true,
+    // "code-runner.executorMap": {
+    //     "cpp": "cd $dir && g++ -O2 -std=gnu++14 -Wall -Wextra -Wshadow $fileName"
+    // },
+
     "[cpp]": {
         "editor.formatOnSave": true,
         "editor.tabSize": 4,
